@@ -7,10 +7,10 @@
 #include <string>
 
 #include <cstring>
-#include <fstream>
 #include "sha256.h"
 
-//запилить сериализацию
+//добавить раздельное добавление в цепь и проверку прошлого хеша
+//также добавить - при создании цепи создание первого блока с хешем
 
 using namespace std;
 
@@ -40,6 +40,7 @@ public:
         tTime = NULL;
         sPrevHash.clear();
     }
+    Block(string str);
     string GetHash()
     {
         return sHash;
@@ -47,8 +48,11 @@ public:
     void MineBlock(uint32_t nDifficulty);
     void setBlockData(string const str);
     string getBlockData();
-    
+    void setBlockIndex(uint64_t num);
+    void setPrevHash(string str) { this->sPrevHash = str; }
+
 private:
+    int64_t nBlockNum;
 	int64_t nNonce;
 	string sData;
 	string sHash;
@@ -80,6 +84,13 @@ string Block::getBlockData()
     return sData;
 }
 void Block::setBlockData(string const str){this->sData = str;}
+Block::Block(string str)
+{
+    setBlockData(str);
+    this->nNonce = -1;
+    tTime = time(nullptr);
+}
+void Block::setBlockIndex(uint64_t num) { this->nBlockNum = num; }
 
 
 class Blockchain
@@ -87,21 +98,23 @@ class Blockchain
 public:
     Blockchain();
     ~Blockchain();
-	void AddBlock(Block bNew);
+	bool AddBlock(Block bNew);
     void printData();
     void printBlockData(uint16_t num);
     vector<Block> getChain();
+    uint64_t getBlockCount();
+    bool difficultyAuthentication(Block block);
     
 private:
+    uint64_t BlockCount = 1;
 	uint32_t nDifficulty;
 	vector<Block> vChain;
 	Block GetLastBlock() const;
 
 };
-Blockchain::Blockchain() {
-    const string genstr = "Genesis Block";
-    vChain.emplace_back(Block());
-    vChain[0].setBlockData(genstr);
+Blockchain::Blockchain()
+{  
+    vChain.emplace_back(Block("Genesis Block"));
     nDifficulty = 2;
 }
 Blockchain::~Blockchain()
@@ -111,12 +124,29 @@ Blockchain::~Blockchain()
         vChain[i].~Block();
     }
 }
-void Blockchain::AddBlock(Block bNew) {
-    bNew.sPrevHash = GetLastBlock().GetHash();
-    bNew.MineBlock(2);
-    vChain.push_back(bNew);
+bool Blockchain::AddBlock(Block newBlock) 
+{
+    if (!newBlock.getBlockData().empty())
+    {
+        newBlock.setPrevHash(GetLastBlock().GetHash());
+        newBlock.MineBlock(2);
+        if (difficultyAuthentication(newBlock))
+        {
+            vChain.push_back(newBlock);
+            BlockCount++;
+            GetLastBlock().setBlockIndex(getBlockCount());
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+    {
+        return false;
+    }
 }
-Block Blockchain::GetLastBlock() const {
+Block Blockchain::GetLastBlock() const 
+{
     return vChain.back();
 }
 vector<Block> Blockchain::getChain()
@@ -139,3 +169,16 @@ void Blockchain::printBlockData(uint16_t num)
             cout<<getChain()[i].getBlockData()<<endl;
     }
 }
+uint64_t Blockchain::getBlockCount() { return BlockCount; }
+
+bool Blockchain::difficultyAuthentication(Block block)
+{
+    string sDifficulty = "5.13. 24.11. 13.16. 9.13.5. 5.13. 24.11.";
+    sDifficulty.replace(sDifficulty.begin(),
+        sDifficulty.begin() + nDifficulty, nDifficulty, '0');
+    if (block.GetHash().substr(0, nDifficulty) == sDifficulty.substr(0, nDifficulty))
+        return true;
+    else
+        return false;
+}
+

@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package testtree.serialize;
+
+
+message FirstPerson
+{
+	fixed64 id = 1;
+}
+message SecondPerson
+{
+	fixed64 id = 1;
+}
+message Full_Message
+{
+	string data = 1;//само сообщение
+	fixed64 chatId = 2;//номер чата куда посылается сообщение
+	fixed64 authorId = 3;//от кого сообщение
+}
+message Chat
+{
+	fixed64 chatid = 1;//ид чата
+	FirstPerson frsprs_chat = 2;//первый челвоек в чате
+	SecondPerson scndprs_chat = 3;//второй человек в чате
+	Full_Message mes = 4;//данные сообщения
+	string fulltxt = 5;//история сообщений
+}
