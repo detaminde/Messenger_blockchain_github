@@ -3,26 +3,85 @@ syntax = "proto3";
 
 package testtree.serialize;
 
-
-message FirstPerson
-{
-	fixed64 id = 1;
-}
-message SecondPerson
-{
-	fixed64 id = 1;
-}
-message Full_Message
+message serFull_Message
 {
 	string data = 1;//само сообщение
 	fixed64 chatId = 2;//номер чата куда посылается сообщение
 	fixed64 authorId = 3;//от кого сообщение
 }
-message Chat
+message serChat
 {
 	fixed64 chatid = 1;//ид чата
-	FirstPerson frsprs_chat = 2;//первый челвоек в чате
-	SecondPerson scndprs_chat = 3;//второй человек в чате
-	Full_Message mes = 4;//данные сообщения
+	serUser user_chat = 2;//будет создавать массив людей, переписывающихся в чате
+	serFull_Message mes = 4;//данные сообщения
 	string fulltxt = 5;//история сообщений
+}
+enum servtype_tree_t
+{
+	DECIMAL_ELEM = 0;
+	REAL_ELEM = 1;
+	STRING_ELEM = 2;
+    BLOCK_ELEM = 3;
+    USER_ELEM = 4;
+}
+message serBlock
+{
+	fixed64 nBlockNum = 1;
+	fixed64 nNonce = 2;
+	string sData = 3;
+	string sHash = 4 ;
+	fixed64 tTime = 5;
+	string prevHash = 6;
+}
+
+message serBlockchain
+{
+	fixed64 BlockCount = 1;
+	fixed32 nDifficulty = 2;
+	repeated serBlock block = 3;
+}
+
+message serUser
+{
+	string nickname = 1;
+	string aboutYourself = 2;
+	string firstName = 3;
+	string secondName = 4;
+	fixed64 userId = 5;
+}
+message serKey
+{
+	oneof key_data
+	{
+		fixed64 decimal = 1;
+		double real = 2;
+		string str = 3;
+		serBlockchain blockchain = 4;
+		serUser seruser = 5;
+	}
+}
+message serValue
+{
+	oneof value_data
+	{
+		fixed64 decimal = 1;
+		double real = 2;
+		string str = 3;
+		serBlockchain blockchain = 4;
+		serUser seruser = 5;
+	}
+}
+message serTreeNode
+{
+	serValue value = 1;
+	serKey key = 2;
+	serTreeNode left = 3;
+	serTreeNode right = 4;
+	serTreeNode parent = 5;
+}
+message serTree
+{
+	serTreeNode treenode = 1;
+	servtype_tree_t value_type = 2;
+	servtype_tree_t key_type = 3;
 }

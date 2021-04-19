@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "blockchain.h"
+#include "chatperson.h"
 
 typedef enum
 {
@@ -10,6 +11,7 @@ typedef enum
 	REAL_ELEM,
 	STRING_ELEM,
     BLOCK_ELEM,
+    USER_ELEM,
 }vtype_tree_t;
 
 typedef union
@@ -18,6 +20,7 @@ typedef union
 	double real;
 	const char* string;
     Blockchain* block;
+    User* user;
 }value_tree_t;
 
 typedef struct tree_node
@@ -96,7 +99,7 @@ extern Tree* new_tree(vtype_tree_t key, vtype_tree_t value) {
         return NULL;
     }
     switch (value) {
-    case DECIMAL_ELEM: case REAL_ELEM: case STRING_ELEM: case BLOCK_ELEM:
+    case DECIMAL_ELEM: case REAL_ELEM: case STRING_ELEM: case BLOCK_ELEM: case USER_ELEM:
         break;
     default:
         fprintf(stderr, "%s\n", "value type not supported");
@@ -196,6 +199,8 @@ static void _set_value(tree_node* node, vtype_tree_t tvalue, void* value) {
     case BLOCK_ELEM:
         node->data.value.block = (Blockchain*)value;
         break;
+    case USER_ELEM:
+        node->data.value.user = (User*)value;
     }
     
 }
@@ -359,6 +364,9 @@ static void _print_tree_elem(tree_node* node, vtype_tree_t tkey, vtype_tree_t tv
         case BLOCK_ELEM:
             node->data.value.block->printData();
             break;
+        case USER_ELEM:
+            node->data.value.user->printInfo();
+            break;
         }
         break;
     case STRING_ELEM:
@@ -375,6 +383,9 @@ static void _print_tree_elem(tree_node* node, vtype_tree_t tkey, vtype_tree_t tv
             break;
         case BLOCK_ELEM:
             node->data.value.block->printData();
+            break;
+        case USER_ELEM:
+            node->data.value.user->printInfo();
             break;
         }
         break;
@@ -415,14 +426,30 @@ class The_Tree
 {
 private:
     Tree* tree;
+    User* user;
 public:
-    The_Tree()
+    The_Tree(vtype_tree_t str)
     {
-        tree = new_tree(STRING_ELEM, BLOCK_ELEM);
+        switch (str)
+            {
+            case BLOCK_ELEM:
+                tree = new_tree(STRING_ELEM, BLOCK_ELEM);
+                break;
+            case USER_ELEM:
+                tree = new_tree(STRING_ELEM, USER_ELEM);
+                break;
+            default:
+                cout << "Данный тип не поддерживается/неправильно введен тип" << endl;
+            }
+        
     }
     The_Tree(Tree* tree)
     {
         this->tree = tree;
+    }
+    The_Tree(User* user)
+    {
+        this->user = user;
     }
     ~The_Tree()
     {

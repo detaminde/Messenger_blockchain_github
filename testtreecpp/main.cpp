@@ -4,45 +4,57 @@
 #include <locale>
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
+#include <stdexcept>
+#include <chrono>
 
 #include "tree.h"
 #include "blockchain.h"
 #include "Packet.pb.h"
-
+#include "chatperson.h"
 
 
 using namespace std;
-using namespace testtree::serialize;
-//запилить сериализацию(учесть конвертирование)
-//запилить авторизацию через шифрование в байты и ещё одно шифрование через простую хеш-функцию
+using namespace testtree;
 
-//void saveMessage(const char*)
+//запилить сериализацию(проверить её)
+//обновить функционал для хеш-таблицы
+//запилить авторизацию через шифрование в байты и ещё одно шифрование через простую хеш-функцию
+//запилить цифровую подпись
+//запилить билдеры и т.д.
+
+//разобраться со временем создания блока для сериализации
+//запилить сериализацию для дерева и проверить её
+
+void transform_Blockchain_ForSerialize(Blockchain& blockchain, 
+    serialize::serBlockchain& serblockchain);
+void saveBlockchain(const char* fname, serialize::serBlockchain& serblockchain);
+
+
+void transform_Tree_ForSerialize(Tree& tree,
+    serialize::serTree& sertree);
+void saveTree(const char* fname, const serialize::serTree& sertree);
+
+
+void loadBlockchain(const char* fname, serialize::serBlock& deserblockchain);
+void loadTree(const char* fname, serialize::serTree& desertree);
 
 int main(void)
 {
-
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
     setlocale(0, "");
-    
-    Full_Message mes;
-    mes.set_data("всем привет");
-    mes.set_authorid(321);
-    mes.set_chatid(1);
-    FirstPerson frst;
-    frst.set_id(123);
-    SecondPerson scnd;
-    scnd.set_id(321);
-    Chat chat;
-    chat.set_allocated_frsprs_chat(&frst);
-    chat.set_allocated_scndprs_chat(&scnd);
-    chat.mutable_mes()->Add()->set_authorid(123);
 
     cout << "Создание цепи: " << endl;
     Blockchain bChain = Blockchain();
     Block b1 = Block("Всем привет");
-    Blockchain* pbChain;
-    The_Tree* tree = new The_Tree(); 
+    //Blockchain* pbChain;
+    //The_Tree* tree = new The_Tree(BLOCK_ELEM); 
 
-    int num = 0;
+    serialize::serBlockchain SerBlockchain = serialize::serBlockchain();
+    transform_Blockchain_ForSerialize(bChain, SerBlockchain);
+    saveBlockchain("blockchain.dat", SerBlockchain);
+
+    /*int num = 0;
     bool flag = true;
     while (flag)
     {
@@ -80,9 +92,88 @@ int main(void)
             break;
         }
         system("pause");
-    }
+    }*/
 
-    delete tree;
+    //delete tree;
+    cout << "Успешно" << endl;
+    system("pause");
     return 0;
+}
+
+//сериализация блокчейна
+void transform_Blockchain_ForSerialize(Blockchain& blockchain,
+    serialize::serBlockchain& serblockchain)
+{
+    serblockchain.set_blockcount(blockchain.getBlockCount());
+    serblockchain.set_ndifficulty(blockchain.getDifficulty());
+
+    serialize::serBlock* bufSerBlock = new serialize::serBlock();
+    for (int i = 0; i < blockchain.getChain().size(); i++)
+    {
+        serblockchain.add_block()->set_prevhash(blockchain.getChain()[i].sPrevHash);
+        serblockchain.add_block()->set_sdata(blockchain.getChain()[i].getBlockData());
+    }
+}
+void saveBlockchain(const char* fname,
+    const serialize::serBlockchain& serblockchain)
+{
+    fstream out(fname, ios::out | ios::trunc | ios::binary);
+    if (!serblockchain.SerializeToOstream(&out))
+        throw runtime_error("Blockchain saving has failed.");
+}
+//десериализация блокчейна(а зачем)
+
+//сериализация дерева
+
+void transform_Tree_ForSerialize(Tree& tree,
+    serialize::serTree& sertree)//добавить везде условия содержания всего этого
+{
+    serialize::serBlockchain bufSerBlock = serialize::serBlockchain();
+    serialize::serUser bufSerUser = serialize::serUser();
+    switch (tree.type.key)
+    {
+    case DECIMAL_ELEM:
+        sertree.set_key_type(serialize::DECIMAL_ELEM);
+        sertree.mutable_treenode()->mutable_key()->set_decimal(tree.node->data.key.decimal);
+        switch (tree.type.value)
+        {
+        case BLOCK_ELEM:
+            sertree.set_value_type(serialize::BLOCK_ELEM);
+            transform_Blockchain_ForSerialize((*tree.node->data.value.block), bufSerBlock);
+            //сделать перебор всего дерева
+            
+                // код-добавление - tree_node
+            
+            //сначала добавлять список дерева, потом значение уж только
+            sertree.mutable_treenode()->mutable_value()
+                ->set_allocated_blockchain(&bufSerBlock);
+            break;
+        case USER_ELEM:
+            //сюда просто скопировать и переделать
+            sertree.set_value_type(serialize::USER_ELEM);
+            break;
+        }
+        break;
+    case STRING_ELEM:
+        sertree.set_key_type(serialize::STRING_ELEM);
+        //сюда скопировать с предыдущего блока
+        sertree.mutable_treenode()->mutable_key()->set_str(tree.node->data.key.string);
+        switch (tree.type.value)
+        {
+        case BLOCK_ELEM:
+            sertree.set_value_type(serialize::BLOCK_ELEM);
+            break;
+        case USER_ELEM:
+            sertree.set_value_type(serialize::USER_ELEM);
+            break;
+        }
+        break;
+    }
+}
+void saveTree(const char* fname, const serialize::serTree& sertree)
+{
+    fstream out(fname, ios::out | ios::trunc | ios::binary);
+    if (!sertree.SerializeToOstream(&out))
+        throw runtime_error("Tree saving has failed.");
 }
 

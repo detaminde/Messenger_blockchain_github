@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+//переписать под список для юзеров
 
 typedef struct HashTab {
     struct {
@@ -150,27 +150,3 @@ static uint32_t _strhash(const char* s, size_t size) {
 }
 //поменять хеш-функцию, усложнить
 
-class hashtab
-{
-private:
-    HashTab* Hash_Table;
-public:
-    hashtab(HashTab* hasht)
-    {
-        this->Hash_Table = hasht;
-    }
-    ~hashtab()
-    {
-        cout << "Object has succesfully deleted." << endl;
-    }
-    HashTab* get_hasht()
-    {
-        return Hash_Table;
-    }
-    void set_hasht(HashTab* obj)
-    {
-        Hash_Table = obj;
-    }
-
-
-};

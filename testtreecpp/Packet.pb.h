@@ -30,6 +30,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -46,7 +47,7 @@ struct TableStruct_Packet_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[9]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,49 +57,97 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 ::PROTOBUF_NAMESPACE_ID::Metadata descriptor_table_Packet_2eproto_metadata_getter(int index);
 namespace testtree {
 namespace serialize {
-class Chat;
-struct ChatDefaultTypeInternal;
-extern ChatDefaultTypeInternal _Chat_default_instance_;
-class FirstPerson;
-struct FirstPersonDefaultTypeInternal;
-extern FirstPersonDefaultTypeInternal _FirstPerson_default_instance_;
-class Full_Message;
-struct Full_MessageDefaultTypeInternal;
-extern Full_MessageDefaultTypeInternal _Full_Message_default_instance_;
-class SecondPerson;
-struct SecondPersonDefaultTypeInternal;
-extern SecondPersonDefaultTypeInternal _SecondPerson_default_instance_;
+class serBlock;
+struct serBlockDefaultTypeInternal;
+extern serBlockDefaultTypeInternal _serBlock_default_instance_;
+class serBlockchain;
+struct serBlockchainDefaultTypeInternal;
+extern serBlockchainDefaultTypeInternal _serBlockchain_default_instance_;
+class serChat;
+struct serChatDefaultTypeInternal;
+extern serChatDefaultTypeInternal _serChat_default_instance_;
+class serFull_Message;
+struct serFull_MessageDefaultTypeInternal;
+extern serFull_MessageDefaultTypeInternal _serFull_Message_default_instance_;
+class serKey;
+struct serKeyDefaultTypeInternal;
+extern serKeyDefaultTypeInternal _serKey_default_instance_;
+class serTree;
+struct serTreeDefaultTypeInternal;
+extern serTreeDefaultTypeInternal _serTree_default_instance_;
+class serTreeNode;
+struct serTreeNodeDefaultTypeInternal;
+extern serTreeNodeDefaultTypeInternal _serTreeNode_default_instance_;
+class serUser;
+struct serUserDefaultTypeInternal;
+extern serUserDefaultTypeInternal _serUser_default_instance_;
+class serValue;
+struct serValueDefaultTypeInternal;
+extern serValueDefaultTypeInternal _serValue_default_instance_;
 }  // namespace serialize
 }  // namespace testtree
 PROTOBUF_NAMESPACE_OPEN
-template<> ::testtree::serialize::Chat* Arena::CreateMaybeMessage<::testtree::serialize::Chat>(Arena*);
-template<> ::testtree::serialize::FirstPerson* Arena::CreateMaybeMessage<::testtree::serialize::FirstPerson>(Arena*);
-template<> ::testtree::serialize::Full_Message* Arena::CreateMaybeMessage<::testtree::serialize::Full_Message>(Arena*);
-template<> ::testtree::serialize::SecondPerson* Arena::CreateMaybeMessage<::testtree::serialize::SecondPerson>(Arena*);
+template<> ::testtree::serialize::serBlock* Arena::CreateMaybeMessage<::testtree::serialize::serBlock>(Arena*);
+template<> ::testtree::serialize::serBlockchain* Arena::CreateMaybeMessage<::testtree::serialize::serBlockchain>(Arena*);
+template<> ::testtree::serialize::serChat* Arena::CreateMaybeMessage<::testtree::serialize::serChat>(Arena*);
+template<> ::testtree::serialize::serFull_Message* Arena::CreateMaybeMessage<::testtree::serialize::serFull_Message>(Arena*);
+template<> ::testtree::serialize::serKey* Arena::CreateMaybeMessage<::testtree::serialize::serKey>(Arena*);
+template<> ::testtree::serialize::serTree* Arena::CreateMaybeMessage<::testtree::serialize::serTree>(Arena*);
+template<> ::testtree::serialize::serTreeNode* Arena::CreateMaybeMessage<::testtree::serialize::serTreeNode>(Arena*);
+template<> ::testtree::serialize::serUser* Arena::CreateMaybeMessage<::testtree::serialize::serUser>(Arena*);
+template<> ::testtree::serialize::serValue* Arena::CreateMaybeMessage<::testtree::serialize::serValue>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace testtree {
 namespace serialize {
 
+enum servtype_tree_t : int {
+  DECIMAL_ELEM = 0,
+  REAL_ELEM = 1,
+  STRING_ELEM = 2,
+  BLOCK_ELEM = 3,
+  USER_ELEM = 4,
+  servtype_tree_t_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  servtype_tree_t_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool servtype_tree_t_IsValid(int value);
+constexpr servtype_tree_t servtype_tree_t_MIN = DECIMAL_ELEM;
+constexpr servtype_tree_t servtype_tree_t_MAX = USER_ELEM;
+constexpr int servtype_tree_t_ARRAYSIZE = servtype_tree_t_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* servtype_tree_t_descriptor();
+template<typename T>
+inline const std::string& servtype_tree_t_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, servtype_tree_t>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function servtype_tree_t_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    servtype_tree_t_descriptor(), enum_t_value);
+}
+inline bool servtype_tree_t_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, servtype_tree_t* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<servtype_tree_t>(
+    servtype_tree_t_descriptor(), name, value);
+}
 // ===================================================================
 
-class FirstPerson PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.FirstPerson) */ {
+class serFull_Message PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serFull_Message) */ {
  public:
-  inline FirstPerson() : FirstPerson(nullptr) {}
-  virtual ~FirstPerson();
-  explicit constexpr FirstPerson(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline serFull_Message() : serFull_Message(nullptr) {}
+  virtual ~serFull_Message();
+  explicit constexpr serFull_Message(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  FirstPerson(const FirstPerson& from);
-  FirstPerson(FirstPerson&& from) noexcept
-    : FirstPerson() {
+  serFull_Message(const serFull_Message& from);
+  serFull_Message(serFull_Message&& from) noexcept
+    : serFull_Message() {
     *this = ::std::move(from);
   }
 
-  inline FirstPerson& operator=(const FirstPerson& from) {
+  inline serFull_Message& operator=(const serFull_Message& from) {
     CopyFrom(from);
     return *this;
   }
-  inline FirstPerson& operator=(FirstPerson&& from) noexcept {
+  inline serFull_Message& operator=(serFull_Message&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -116,20 +165,20 @@ class FirstPerson PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const FirstPerson& default_instance() {
+  static const serFull_Message& default_instance() {
     return *internal_default_instance();
   }
-  static inline const FirstPerson* internal_default_instance() {
-    return reinterpret_cast<const FirstPerson*>(
-               &_FirstPerson_default_instance_);
+  static inline const serFull_Message* internal_default_instance() {
+    return reinterpret_cast<const serFull_Message*>(
+               &_serFull_Message_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(FirstPerson& a, FirstPerson& b) {
+  friend void swap(serFull_Message& a, serFull_Message& b) {
     a.Swap(&b);
   }
-  inline void Swap(FirstPerson* other) {
+  inline void Swap(serFull_Message* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -137,7 +186,7 @@ class FirstPerson PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(FirstPerson* other) {
+  void UnsafeArenaSwap(serFull_Message* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -145,17 +194,17 @@ class FirstPerson PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline FirstPerson* New() const final {
-    return CreateMaybeMessage<FirstPerson>(nullptr);
+  inline serFull_Message* New() const final {
+    return CreateMaybeMessage<serFull_Message>(nullptr);
   }
 
-  FirstPerson* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<FirstPerson>(arena);
+  serFull_Message* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serFull_Message>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const FirstPerson& from);
-  void MergeFrom(const FirstPerson& from);
+  void CopyFrom(const serFull_Message& from);
+  void MergeFrom(const serFull_Message& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -169,287 +218,13 @@ class FirstPerson PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(FirstPerson* other);
+  void InternalSwap(serFull_Message* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "testtree.serialize.FirstPerson";
+    return "testtree.serialize.serFull_Message";
   }
   protected:
-  explicit FirstPerson(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  private:
-  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
-    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
-  }
-
-  public:
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kIdFieldNumber = 1,
-  };
-  // fixed64 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:testtree.serialize.FirstPerson)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_Packet_2eproto;
-};
-// -------------------------------------------------------------------
-
-class SecondPerson PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.SecondPerson) */ {
- public:
-  inline SecondPerson() : SecondPerson(nullptr) {}
-  virtual ~SecondPerson();
-  explicit constexpr SecondPerson(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  SecondPerson(const SecondPerson& from);
-  SecondPerson(SecondPerson&& from) noexcept
-    : SecondPerson() {
-    *this = ::std::move(from);
-  }
-
-  inline SecondPerson& operator=(const SecondPerson& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline SecondPerson& operator=(SecondPerson&& from) noexcept {
-    if (GetArena() == from.GetArena()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return GetMetadataStatic().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return GetMetadataStatic().reflection;
-  }
-  static const SecondPerson& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const SecondPerson* internal_default_instance() {
-    return reinterpret_cast<const SecondPerson*>(
-               &_SecondPerson_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    1;
-
-  friend void swap(SecondPerson& a, SecondPerson& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(SecondPerson* other) {
-    if (other == this) return;
-    if (GetArena() == other->GetArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(SecondPerson* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline SecondPerson* New() const final {
-    return CreateMaybeMessage<SecondPerson>(nullptr);
-  }
-
-  SecondPerson* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<SecondPerson>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const SecondPerson& from);
-  void MergeFrom(const SecondPerson& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(SecondPerson* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "testtree.serialize.SecondPerson";
-  }
-  protected:
-  explicit SecondPerson(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  private:
-  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
-    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
-  }
-
-  public:
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kIdFieldNumber = 1,
-  };
-  // fixed64 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:testtree.serialize.SecondPerson)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_Packet_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Full_Message PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.Full_Message) */ {
- public:
-  inline Full_Message() : Full_Message(nullptr) {}
-  virtual ~Full_Message();
-  explicit constexpr Full_Message(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Full_Message(const Full_Message& from);
-  Full_Message(Full_Message&& from) noexcept
-    : Full_Message() {
-    *this = ::std::move(from);
-  }
-
-  inline Full_Message& operator=(const Full_Message& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Full_Message& operator=(Full_Message&& from) noexcept {
-    if (GetArena() == from.GetArena()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return GetMetadataStatic().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return GetMetadataStatic().reflection;
-  }
-  static const Full_Message& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Full_Message* internal_default_instance() {
-    return reinterpret_cast<const Full_Message*>(
-               &_Full_Message_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(Full_Message& a, Full_Message& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Full_Message* other) {
-    if (other == this) return;
-    if (GetArena() == other->GetArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Full_Message* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline Full_Message* New() const final {
-    return CreateMaybeMessage<Full_Message>(nullptr);
-  }
-
-  Full_Message* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Full_Message>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Full_Message& from);
-  void MergeFrom(const Full_Message& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Full_Message* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "testtree.serialize.Full_Message";
-  }
-  protected:
-  explicit Full_Message(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit serFull_Message(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -506,7 +281,7 @@ class Full_Message PROTOBUF_FINAL :
   void _internal_set_authorid(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:testtree.serialize.Full_Message)
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serFull_Message)
  private:
   class _Internal;
 
@@ -521,24 +296,24 @@ class Full_Message PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
-class Chat PROTOBUF_FINAL :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.Chat) */ {
+class serChat PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serChat) */ {
  public:
-  inline Chat() : Chat(nullptr) {}
-  virtual ~Chat();
-  explicit constexpr Chat(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline serChat() : serChat(nullptr) {}
+  virtual ~serChat();
+  explicit constexpr serChat(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Chat(const Chat& from);
-  Chat(Chat&& from) noexcept
-    : Chat() {
+  serChat(const serChat& from);
+  serChat(serChat&& from) noexcept
+    : serChat() {
     *this = ::std::move(from);
   }
 
-  inline Chat& operator=(const Chat& from) {
+  inline serChat& operator=(const serChat& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Chat& operator=(Chat&& from) noexcept {
+  inline serChat& operator=(serChat&& from) noexcept {
     if (GetArena() == from.GetArena()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -556,20 +331,20 @@ class Chat PROTOBUF_FINAL :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return GetMetadataStatic().reflection;
   }
-  static const Chat& default_instance() {
+  static const serChat& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Chat* internal_default_instance() {
-    return reinterpret_cast<const Chat*>(
-               &_Chat_default_instance_);
+  static inline const serChat* internal_default_instance() {
+    return reinterpret_cast<const serChat*>(
+               &_serChat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    1;
 
-  friend void swap(Chat& a, Chat& b) {
+  friend void swap(serChat& a, serChat& b) {
     a.Swap(&b);
   }
-  inline void Swap(Chat* other) {
+  inline void Swap(serChat* other) {
     if (other == this) return;
     if (GetArena() == other->GetArena()) {
       InternalSwap(other);
@@ -577,7 +352,7 @@ class Chat PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Chat* other) {
+  void UnsafeArenaSwap(serChat* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetArena() == other->GetArena());
     InternalSwap(other);
@@ -585,17 +360,17 @@ class Chat PROTOBUF_FINAL :
 
   // implements Message ----------------------------------------------
 
-  inline Chat* New() const final {
-    return CreateMaybeMessage<Chat>(nullptr);
+  inline serChat* New() const final {
+    return CreateMaybeMessage<serChat>(nullptr);
   }
 
-  Chat* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Chat>(arena);
+  serChat* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serChat>(arena);
   }
   void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
   void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Chat& from);
-  void MergeFrom(const Chat& from);
+  void CopyFrom(const serChat& from);
+  void MergeFrom(const serChat& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -609,13 +384,13 @@ class Chat PROTOBUF_FINAL :
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Chat* other);
+  void InternalSwap(serChat* other);
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "testtree.serialize.Chat";
+    return "testtree.serialize.serChat";
   }
   protected:
-  explicit Chat(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  explicit serChat(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   private:
   static void ArenaDtor(void* object);
   inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
@@ -635,8 +410,7 @@ class Chat PROTOBUF_FINAL :
 
   enum : int {
     kFulltxtFieldNumber = 5,
-    kFrsprsChatFieldNumber = 2,
-    kScndprsChatFieldNumber = 3,
+    kUserChatFieldNumber = 2,
     kMesFieldNumber = 4,
     kChatidFieldNumber = 1,
   };
@@ -656,59 +430,41 @@ class Chat PROTOBUF_FINAL :
   std::string* _internal_mutable_fulltxt();
   public:
 
-  // .testtree.serialize.FirstPerson frsprs_chat = 2;
-  bool has_frsprs_chat() const;
+  // .testtree.serialize.serUser user_chat = 2;
+  bool has_user_chat() const;
   private:
-  bool _internal_has_frsprs_chat() const;
+  bool _internal_has_user_chat() const;
   public:
-  void clear_frsprs_chat();
-  const ::testtree::serialize::FirstPerson& frsprs_chat() const;
-  ::testtree::serialize::FirstPerson* release_frsprs_chat();
-  ::testtree::serialize::FirstPerson* mutable_frsprs_chat();
-  void set_allocated_frsprs_chat(::testtree::serialize::FirstPerson* frsprs_chat);
+  void clear_user_chat();
+  const ::testtree::serialize::serUser& user_chat() const;
+  ::testtree::serialize::serUser* release_user_chat();
+  ::testtree::serialize::serUser* mutable_user_chat();
+  void set_allocated_user_chat(::testtree::serialize::serUser* user_chat);
   private:
-  const ::testtree::serialize::FirstPerson& _internal_frsprs_chat() const;
-  ::testtree::serialize::FirstPerson* _internal_mutable_frsprs_chat();
+  const ::testtree::serialize::serUser& _internal_user_chat() const;
+  ::testtree::serialize::serUser* _internal_mutable_user_chat();
   public:
-  void unsafe_arena_set_allocated_frsprs_chat(
-      ::testtree::serialize::FirstPerson* frsprs_chat);
-  ::testtree::serialize::FirstPerson* unsafe_arena_release_frsprs_chat();
+  void unsafe_arena_set_allocated_user_chat(
+      ::testtree::serialize::serUser* user_chat);
+  ::testtree::serialize::serUser* unsafe_arena_release_user_chat();
 
-  // .testtree.serialize.SecondPerson scndprs_chat = 3;
-  bool has_scndprs_chat() const;
-  private:
-  bool _internal_has_scndprs_chat() const;
-  public:
-  void clear_scndprs_chat();
-  const ::testtree::serialize::SecondPerson& scndprs_chat() const;
-  ::testtree::serialize::SecondPerson* release_scndprs_chat();
-  ::testtree::serialize::SecondPerson* mutable_scndprs_chat();
-  void set_allocated_scndprs_chat(::testtree::serialize::SecondPerson* scndprs_chat);
-  private:
-  const ::testtree::serialize::SecondPerson& _internal_scndprs_chat() const;
-  ::testtree::serialize::SecondPerson* _internal_mutable_scndprs_chat();
-  public:
-  void unsafe_arena_set_allocated_scndprs_chat(
-      ::testtree::serialize::SecondPerson* scndprs_chat);
-  ::testtree::serialize::SecondPerson* unsafe_arena_release_scndprs_chat();
-
-  // .testtree.serialize.Full_Message mes = 4;
+  // .testtree.serialize.serFull_Message mes = 4;
   bool has_mes() const;
   private:
   bool _internal_has_mes() const;
   public:
   void clear_mes();
-  const ::testtree::serialize::Full_Message& mes() const;
-  ::testtree::serialize::Full_Message* release_mes();
-  ::testtree::serialize::Full_Message* mutable_mes();
-  void set_allocated_mes(::testtree::serialize::Full_Message* mes);
+  const ::testtree::serialize::serFull_Message& mes() const;
+  ::testtree::serialize::serFull_Message* release_mes();
+  ::testtree::serialize::serFull_Message* mutable_mes();
+  void set_allocated_mes(::testtree::serialize::serFull_Message* mes);
   private:
-  const ::testtree::serialize::Full_Message& _internal_mes() const;
-  ::testtree::serialize::Full_Message* _internal_mutable_mes();
+  const ::testtree::serialize::serFull_Message& _internal_mes() const;
+  ::testtree::serialize::serFull_Message* _internal_mutable_mes();
   public:
   void unsafe_arena_set_allocated_mes(
-      ::testtree::serialize::Full_Message* mes);
-  ::testtree::serialize::Full_Message* unsafe_arena_release_mes();
+      ::testtree::serialize::serFull_Message* mes);
+  ::testtree::serialize::serFull_Message* unsafe_arena_release_mes();
 
   // fixed64 chatid = 1;
   void clear_chatid();
@@ -719,7 +475,7 @@ class Chat PROTOBUF_FINAL :
   void _internal_set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
-  // @@protoc_insertion_point(class_scope:testtree.serialize.Chat)
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serChat)
  private:
   class _Internal;
 
@@ -727,10 +483,1479 @@ class Chat PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr fulltxt_;
-  ::testtree::serialize::FirstPerson* frsprs_chat_;
-  ::testtree::serialize::SecondPerson* scndprs_chat_;
-  ::testtree::serialize::Full_Message* mes_;
+  ::testtree::serialize::serUser* user_chat_;
+  ::testtree::serialize::serFull_Message* mes_;
   ::PROTOBUF_NAMESPACE_ID::uint64 chatid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serBlock PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serBlock) */ {
+ public:
+  inline serBlock() : serBlock(nullptr) {}
+  virtual ~serBlock();
+  explicit constexpr serBlock(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serBlock(const serBlock& from);
+  serBlock(serBlock&& from) noexcept
+    : serBlock() {
+    *this = ::std::move(from);
+  }
+
+  inline serBlock& operator=(const serBlock& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serBlock& operator=(serBlock&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serBlock& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const serBlock* internal_default_instance() {
+    return reinterpret_cast<const serBlock*>(
+               &_serBlock_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(serBlock& a, serBlock& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serBlock* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serBlock* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serBlock* New() const final {
+    return CreateMaybeMessage<serBlock>(nullptr);
+  }
+
+  serBlock* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serBlock>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serBlock& from);
+  void MergeFrom(const serBlock& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serBlock* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serBlock";
+  }
+  protected:
+  explicit serBlock(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSDataFieldNumber = 3,
+    kSHashFieldNumber = 4,
+    kPrevHashFieldNumber = 6,
+    kNBlockNumFieldNumber = 1,
+    kNNonceFieldNumber = 2,
+    kTTimeFieldNumber = 5,
+  };
+  // string sData = 3;
+  void clear_sdata();
+  const std::string& sdata() const;
+  void set_sdata(const std::string& value);
+  void set_sdata(std::string&& value);
+  void set_sdata(const char* value);
+  void set_sdata(const char* value, size_t size);
+  std::string* mutable_sdata();
+  std::string* release_sdata();
+  void set_allocated_sdata(std::string* sdata);
+  private:
+  const std::string& _internal_sdata() const;
+  void _internal_set_sdata(const std::string& value);
+  std::string* _internal_mutable_sdata();
+  public:
+
+  // string sHash = 4;
+  void clear_shash();
+  const std::string& shash() const;
+  void set_shash(const std::string& value);
+  void set_shash(std::string&& value);
+  void set_shash(const char* value);
+  void set_shash(const char* value, size_t size);
+  std::string* mutable_shash();
+  std::string* release_shash();
+  void set_allocated_shash(std::string* shash);
+  private:
+  const std::string& _internal_shash() const;
+  void _internal_set_shash(const std::string& value);
+  std::string* _internal_mutable_shash();
+  public:
+
+  // string prevHash = 6;
+  void clear_prevhash();
+  const std::string& prevhash() const;
+  void set_prevhash(const std::string& value);
+  void set_prevhash(std::string&& value);
+  void set_prevhash(const char* value);
+  void set_prevhash(const char* value, size_t size);
+  std::string* mutable_prevhash();
+  std::string* release_prevhash();
+  void set_allocated_prevhash(std::string* prevhash);
+  private:
+  const std::string& _internal_prevhash() const;
+  void _internal_set_prevhash(const std::string& value);
+  std::string* _internal_mutable_prevhash();
+  public:
+
+  // fixed64 nBlockNum = 1;
+  void clear_nblocknum();
+  ::PROTOBUF_NAMESPACE_ID::uint64 nblocknum() const;
+  void set_nblocknum(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_nblocknum() const;
+  void _internal_set_nblocknum(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // fixed64 nNonce = 2;
+  void clear_nnonce();
+  ::PROTOBUF_NAMESPACE_ID::uint64 nnonce() const;
+  void set_nnonce(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_nnonce() const;
+  void _internal_set_nnonce(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // fixed64 tTime = 5;
+  void clear_ttime();
+  ::PROTOBUF_NAMESPACE_ID::uint64 ttime() const;
+  void set_ttime(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_ttime() const;
+  void _internal_set_ttime(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serBlock)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sdata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr shash_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr prevhash_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 nblocknum_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 nnonce_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 ttime_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serBlockchain PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serBlockchain) */ {
+ public:
+  inline serBlockchain() : serBlockchain(nullptr) {}
+  virtual ~serBlockchain();
+  explicit constexpr serBlockchain(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serBlockchain(const serBlockchain& from);
+  serBlockchain(serBlockchain&& from) noexcept
+    : serBlockchain() {
+    *this = ::std::move(from);
+  }
+
+  inline serBlockchain& operator=(const serBlockchain& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serBlockchain& operator=(serBlockchain&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serBlockchain& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const serBlockchain* internal_default_instance() {
+    return reinterpret_cast<const serBlockchain*>(
+               &_serBlockchain_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(serBlockchain& a, serBlockchain& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serBlockchain* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serBlockchain* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serBlockchain* New() const final {
+    return CreateMaybeMessage<serBlockchain>(nullptr);
+  }
+
+  serBlockchain* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serBlockchain>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serBlockchain& from);
+  void MergeFrom(const serBlockchain& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serBlockchain* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serBlockchain";
+  }
+  protected:
+  explicit serBlockchain(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBlockFieldNumber = 3,
+    kBlockCountFieldNumber = 1,
+    kNDifficultyFieldNumber = 2,
+  };
+  // repeated .testtree.serialize.serBlock block = 3;
+  int block_size() const;
+  private:
+  int _internal_block_size() const;
+  public:
+  void clear_block();
+  ::testtree::serialize::serBlock* mutable_block(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::testtree::serialize::serBlock >*
+      mutable_block();
+  private:
+  const ::testtree::serialize::serBlock& _internal_block(int index) const;
+  ::testtree::serialize::serBlock* _internal_add_block();
+  public:
+  const ::testtree::serialize::serBlock& block(int index) const;
+  ::testtree::serialize::serBlock* add_block();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::testtree::serialize::serBlock >&
+      block() const;
+
+  // fixed64 BlockCount = 1;
+  void clear_blockcount();
+  ::PROTOBUF_NAMESPACE_ID::uint64 blockcount() const;
+  void set_blockcount(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_blockcount() const;
+  void _internal_set_blockcount(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // fixed32 nDifficulty = 2;
+  void clear_ndifficulty();
+  ::PROTOBUF_NAMESPACE_ID::uint32 ndifficulty() const;
+  void set_ndifficulty(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_ndifficulty() const;
+  void _internal_set_ndifficulty(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serBlockchain)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::testtree::serialize::serBlock > block_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 blockcount_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 ndifficulty_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serUser PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serUser) */ {
+ public:
+  inline serUser() : serUser(nullptr) {}
+  virtual ~serUser();
+  explicit constexpr serUser(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serUser(const serUser& from);
+  serUser(serUser&& from) noexcept
+    : serUser() {
+    *this = ::std::move(from);
+  }
+
+  inline serUser& operator=(const serUser& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serUser& operator=(serUser&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serUser& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const serUser* internal_default_instance() {
+    return reinterpret_cast<const serUser*>(
+               &_serUser_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(serUser& a, serUser& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serUser* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serUser* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serUser* New() const final {
+    return CreateMaybeMessage<serUser>(nullptr);
+  }
+
+  serUser* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serUser>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serUser& from);
+  void MergeFrom(const serUser& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serUser* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serUser";
+  }
+  protected:
+  explicit serUser(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNicknameFieldNumber = 1,
+    kAboutYourselfFieldNumber = 2,
+    kFirstNameFieldNumber = 3,
+    kSecondNameFieldNumber = 4,
+    kUserIdFieldNumber = 5,
+  };
+  // string nickname = 1;
+  void clear_nickname();
+  const std::string& nickname() const;
+  void set_nickname(const std::string& value);
+  void set_nickname(std::string&& value);
+  void set_nickname(const char* value);
+  void set_nickname(const char* value, size_t size);
+  std::string* mutable_nickname();
+  std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
+  private:
+  const std::string& _internal_nickname() const;
+  void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
+  // string aboutYourself = 2;
+  void clear_aboutyourself();
+  const std::string& aboutyourself() const;
+  void set_aboutyourself(const std::string& value);
+  void set_aboutyourself(std::string&& value);
+  void set_aboutyourself(const char* value);
+  void set_aboutyourself(const char* value, size_t size);
+  std::string* mutable_aboutyourself();
+  std::string* release_aboutyourself();
+  void set_allocated_aboutyourself(std::string* aboutyourself);
+  private:
+  const std::string& _internal_aboutyourself() const;
+  void _internal_set_aboutyourself(const std::string& value);
+  std::string* _internal_mutable_aboutyourself();
+  public:
+
+  // string firstName = 3;
+  void clear_firstname();
+  const std::string& firstname() const;
+  void set_firstname(const std::string& value);
+  void set_firstname(std::string&& value);
+  void set_firstname(const char* value);
+  void set_firstname(const char* value, size_t size);
+  std::string* mutable_firstname();
+  std::string* release_firstname();
+  void set_allocated_firstname(std::string* firstname);
+  private:
+  const std::string& _internal_firstname() const;
+  void _internal_set_firstname(const std::string& value);
+  std::string* _internal_mutable_firstname();
+  public:
+
+  // string secondName = 4;
+  void clear_secondname();
+  const std::string& secondname() const;
+  void set_secondname(const std::string& value);
+  void set_secondname(std::string&& value);
+  void set_secondname(const char* value);
+  void set_secondname(const char* value, size_t size);
+  std::string* mutable_secondname();
+  std::string* release_secondname();
+  void set_allocated_secondname(std::string* secondname);
+  private:
+  const std::string& _internal_secondname() const;
+  void _internal_set_secondname(const std::string& value);
+  std::string* _internal_mutable_secondname();
+  public:
+
+  // fixed64 userId = 5;
+  void clear_userid();
+  ::PROTOBUF_NAMESPACE_ID::uint64 userid() const;
+  void set_userid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_userid() const;
+  void _internal_set_userid(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serUser)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr aboutyourself_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr firstname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr secondname_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 userid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serKey PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serKey) */ {
+ public:
+  inline serKey() : serKey(nullptr) {}
+  virtual ~serKey();
+  explicit constexpr serKey(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serKey(const serKey& from);
+  serKey(serKey&& from) noexcept
+    : serKey() {
+    *this = ::std::move(from);
+  }
+
+  inline serKey& operator=(const serKey& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serKey& operator=(serKey&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serKey& default_instance() {
+    return *internal_default_instance();
+  }
+  enum KeyDataCase {
+    kDecimal = 1,
+    kReal = 2,
+    kStr = 3,
+    kBlockchain = 4,
+    kSeruser = 5,
+    KEY_DATA_NOT_SET = 0,
+  };
+
+  static inline const serKey* internal_default_instance() {
+    return reinterpret_cast<const serKey*>(
+               &_serKey_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(serKey& a, serKey& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serKey* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serKey* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serKey* New() const final {
+    return CreateMaybeMessage<serKey>(nullptr);
+  }
+
+  serKey* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serKey>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serKey& from);
+  void MergeFrom(const serKey& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serKey* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serKey";
+  }
+  protected:
+  explicit serKey(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDecimalFieldNumber = 1,
+    kRealFieldNumber = 2,
+    kStrFieldNumber = 3,
+    kBlockchainFieldNumber = 4,
+    kSeruserFieldNumber = 5,
+  };
+  // fixed64 decimal = 1;
+  bool has_decimal() const;
+  private:
+  bool _internal_has_decimal() const;
+  public:
+  void clear_decimal();
+  ::PROTOBUF_NAMESPACE_ID::uint64 decimal() const;
+  void set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_decimal() const;
+  void _internal_set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // double real = 2;
+  bool has_real() const;
+  private:
+  bool _internal_has_real() const;
+  public:
+  void clear_real();
+  double real() const;
+  void set_real(double value);
+  private:
+  double _internal_real() const;
+  void _internal_set_real(double value);
+  public:
+
+  // string str = 3;
+  bool has_str() const;
+  private:
+  bool _internal_has_str() const;
+  public:
+  void clear_str();
+  const std::string& str() const;
+  void set_str(const std::string& value);
+  void set_str(std::string&& value);
+  void set_str(const char* value);
+  void set_str(const char* value, size_t size);
+  std::string* mutable_str();
+  std::string* release_str();
+  void set_allocated_str(std::string* str);
+  private:
+  const std::string& _internal_str() const;
+  void _internal_set_str(const std::string& value);
+  std::string* _internal_mutable_str();
+  public:
+
+  // .testtree.serialize.serBlockchain blockchain = 4;
+  bool has_blockchain() const;
+  private:
+  bool _internal_has_blockchain() const;
+  public:
+  void clear_blockchain();
+  const ::testtree::serialize::serBlockchain& blockchain() const;
+  ::testtree::serialize::serBlockchain* release_blockchain();
+  ::testtree::serialize::serBlockchain* mutable_blockchain();
+  void set_allocated_blockchain(::testtree::serialize::serBlockchain* blockchain);
+  private:
+  const ::testtree::serialize::serBlockchain& _internal_blockchain() const;
+  ::testtree::serialize::serBlockchain* _internal_mutable_blockchain();
+  public:
+  void unsafe_arena_set_allocated_blockchain(
+      ::testtree::serialize::serBlockchain* blockchain);
+  ::testtree::serialize::serBlockchain* unsafe_arena_release_blockchain();
+
+  // .testtree.serialize.serUser seruser = 5;
+  bool has_seruser() const;
+  private:
+  bool _internal_has_seruser() const;
+  public:
+  void clear_seruser();
+  const ::testtree::serialize::serUser& seruser() const;
+  ::testtree::serialize::serUser* release_seruser();
+  ::testtree::serialize::serUser* mutable_seruser();
+  void set_allocated_seruser(::testtree::serialize::serUser* seruser);
+  private:
+  const ::testtree::serialize::serUser& _internal_seruser() const;
+  ::testtree::serialize::serUser* _internal_mutable_seruser();
+  public:
+  void unsafe_arena_set_allocated_seruser(
+      ::testtree::serialize::serUser* seruser);
+  ::testtree::serialize::serUser* unsafe_arena_release_seruser();
+
+  void clear_key_data();
+  KeyDataCase key_data_case() const;
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serKey)
+ private:
+  class _Internal;
+  void set_has_decimal();
+  void set_has_real();
+  void set_has_str();
+  void set_has_blockchain();
+  void set_has_seruser();
+
+  inline bool has_key_data() const;
+  inline void clear_has_key_data();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  union KeyDataUnion {
+    constexpr KeyDataUnion() : _constinit_{} {}
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+    ::PROTOBUF_NAMESPACE_ID::uint64 decimal_;
+    double real_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr str_;
+    ::testtree::serialize::serBlockchain* blockchain_;
+    ::testtree::serialize::serUser* seruser_;
+  } key_data_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serValue PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serValue) */ {
+ public:
+  inline serValue() : serValue(nullptr) {}
+  virtual ~serValue();
+  explicit constexpr serValue(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serValue(const serValue& from);
+  serValue(serValue&& from) noexcept
+    : serValue() {
+    *this = ::std::move(from);
+  }
+
+  inline serValue& operator=(const serValue& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serValue& operator=(serValue&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serValue& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ValueDataCase {
+    kDecimal = 1,
+    kReal = 2,
+    kStr = 3,
+    kBlockchain = 4,
+    kSeruser = 5,
+    VALUE_DATA_NOT_SET = 0,
+  };
+
+  static inline const serValue* internal_default_instance() {
+    return reinterpret_cast<const serValue*>(
+               &_serValue_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(serValue& a, serValue& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serValue* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serValue* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serValue* New() const final {
+    return CreateMaybeMessage<serValue>(nullptr);
+  }
+
+  serValue* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serValue>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serValue& from);
+  void MergeFrom(const serValue& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serValue* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serValue";
+  }
+  protected:
+  explicit serValue(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDecimalFieldNumber = 1,
+    kRealFieldNumber = 2,
+    kStrFieldNumber = 3,
+    kBlockchainFieldNumber = 4,
+    kSeruserFieldNumber = 5,
+  };
+  // fixed64 decimal = 1;
+  bool has_decimal() const;
+  private:
+  bool _internal_has_decimal() const;
+  public:
+  void clear_decimal();
+  ::PROTOBUF_NAMESPACE_ID::uint64 decimal() const;
+  void set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint64 _internal_decimal() const;
+  void _internal_set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value);
+  public:
+
+  // double real = 2;
+  bool has_real() const;
+  private:
+  bool _internal_has_real() const;
+  public:
+  void clear_real();
+  double real() const;
+  void set_real(double value);
+  private:
+  double _internal_real() const;
+  void _internal_set_real(double value);
+  public:
+
+  // string str = 3;
+  bool has_str() const;
+  private:
+  bool _internal_has_str() const;
+  public:
+  void clear_str();
+  const std::string& str() const;
+  void set_str(const std::string& value);
+  void set_str(std::string&& value);
+  void set_str(const char* value);
+  void set_str(const char* value, size_t size);
+  std::string* mutable_str();
+  std::string* release_str();
+  void set_allocated_str(std::string* str);
+  private:
+  const std::string& _internal_str() const;
+  void _internal_set_str(const std::string& value);
+  std::string* _internal_mutable_str();
+  public:
+
+  // .testtree.serialize.serBlockchain blockchain = 4;
+  bool has_blockchain() const;
+  private:
+  bool _internal_has_blockchain() const;
+  public:
+  void clear_blockchain();
+  const ::testtree::serialize::serBlockchain& blockchain() const;
+  ::testtree::serialize::serBlockchain* release_blockchain();
+  ::testtree::serialize::serBlockchain* mutable_blockchain();
+  void set_allocated_blockchain(::testtree::serialize::serBlockchain* blockchain);
+  private:
+  const ::testtree::serialize::serBlockchain& _internal_blockchain() const;
+  ::testtree::serialize::serBlockchain* _internal_mutable_blockchain();
+  public:
+  void unsafe_arena_set_allocated_blockchain(
+      ::testtree::serialize::serBlockchain* blockchain);
+  ::testtree::serialize::serBlockchain* unsafe_arena_release_blockchain();
+
+  // .testtree.serialize.serUser seruser = 5;
+  bool has_seruser() const;
+  private:
+  bool _internal_has_seruser() const;
+  public:
+  void clear_seruser();
+  const ::testtree::serialize::serUser& seruser() const;
+  ::testtree::serialize::serUser* release_seruser();
+  ::testtree::serialize::serUser* mutable_seruser();
+  void set_allocated_seruser(::testtree::serialize::serUser* seruser);
+  private:
+  const ::testtree::serialize::serUser& _internal_seruser() const;
+  ::testtree::serialize::serUser* _internal_mutable_seruser();
+  public:
+  void unsafe_arena_set_allocated_seruser(
+      ::testtree::serialize::serUser* seruser);
+  ::testtree::serialize::serUser* unsafe_arena_release_seruser();
+
+  void clear_value_data();
+  ValueDataCase value_data_case() const;
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serValue)
+ private:
+  class _Internal;
+  void set_has_decimal();
+  void set_has_real();
+  void set_has_str();
+  void set_has_blockchain();
+  void set_has_seruser();
+
+  inline bool has_value_data() const;
+  inline void clear_has_value_data();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  union ValueDataUnion {
+    constexpr ValueDataUnion() : _constinit_{} {}
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+    ::PROTOBUF_NAMESPACE_ID::uint64 decimal_;
+    double real_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr str_;
+    ::testtree::serialize::serBlockchain* blockchain_;
+    ::testtree::serialize::serUser* seruser_;
+  } value_data_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serTreeNode PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serTreeNode) */ {
+ public:
+  inline serTreeNode() : serTreeNode(nullptr) {}
+  virtual ~serTreeNode();
+  explicit constexpr serTreeNode(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serTreeNode(const serTreeNode& from);
+  serTreeNode(serTreeNode&& from) noexcept
+    : serTreeNode() {
+    *this = ::std::move(from);
+  }
+
+  inline serTreeNode& operator=(const serTreeNode& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serTreeNode& operator=(serTreeNode&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serTreeNode& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const serTreeNode* internal_default_instance() {
+    return reinterpret_cast<const serTreeNode*>(
+               &_serTreeNode_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(serTreeNode& a, serTreeNode& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serTreeNode* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serTreeNode* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serTreeNode* New() const final {
+    return CreateMaybeMessage<serTreeNode>(nullptr);
+  }
+
+  serTreeNode* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serTreeNode>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serTreeNode& from);
+  void MergeFrom(const serTreeNode& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serTreeNode* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serTreeNode";
+  }
+  protected:
+  explicit serTreeNode(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValueFieldNumber = 1,
+    kKeyFieldNumber = 2,
+    kLeftFieldNumber = 3,
+    kRightFieldNumber = 4,
+    kParentFieldNumber = 5,
+  };
+  // .testtree.serialize.serValue value = 1;
+  bool has_value() const;
+  private:
+  bool _internal_has_value() const;
+  public:
+  void clear_value();
+  const ::testtree::serialize::serValue& value() const;
+  ::testtree::serialize::serValue* release_value();
+  ::testtree::serialize::serValue* mutable_value();
+  void set_allocated_value(::testtree::serialize::serValue* value);
+  private:
+  const ::testtree::serialize::serValue& _internal_value() const;
+  ::testtree::serialize::serValue* _internal_mutable_value();
+  public:
+  void unsafe_arena_set_allocated_value(
+      ::testtree::serialize::serValue* value);
+  ::testtree::serialize::serValue* unsafe_arena_release_value();
+
+  // .testtree.serialize.serKey key = 2;
+  bool has_key() const;
+  private:
+  bool _internal_has_key() const;
+  public:
+  void clear_key();
+  const ::testtree::serialize::serKey& key() const;
+  ::testtree::serialize::serKey* release_key();
+  ::testtree::serialize::serKey* mutable_key();
+  void set_allocated_key(::testtree::serialize::serKey* key);
+  private:
+  const ::testtree::serialize::serKey& _internal_key() const;
+  ::testtree::serialize::serKey* _internal_mutable_key();
+  public:
+  void unsafe_arena_set_allocated_key(
+      ::testtree::serialize::serKey* key);
+  ::testtree::serialize::serKey* unsafe_arena_release_key();
+
+  // .testtree.serialize.serTreeNode left = 3;
+  bool has_left() const;
+  private:
+  bool _internal_has_left() const;
+  public:
+  void clear_left();
+  const ::testtree::serialize::serTreeNode& left() const;
+  ::testtree::serialize::serTreeNode* release_left();
+  ::testtree::serialize::serTreeNode* mutable_left();
+  void set_allocated_left(::testtree::serialize::serTreeNode* left);
+  private:
+  const ::testtree::serialize::serTreeNode& _internal_left() const;
+  ::testtree::serialize::serTreeNode* _internal_mutable_left();
+  public:
+  void unsafe_arena_set_allocated_left(
+      ::testtree::serialize::serTreeNode* left);
+  ::testtree::serialize::serTreeNode* unsafe_arena_release_left();
+
+  // .testtree.serialize.serTreeNode right = 4;
+  bool has_right() const;
+  private:
+  bool _internal_has_right() const;
+  public:
+  void clear_right();
+  const ::testtree::serialize::serTreeNode& right() const;
+  ::testtree::serialize::serTreeNode* release_right();
+  ::testtree::serialize::serTreeNode* mutable_right();
+  void set_allocated_right(::testtree::serialize::serTreeNode* right);
+  private:
+  const ::testtree::serialize::serTreeNode& _internal_right() const;
+  ::testtree::serialize::serTreeNode* _internal_mutable_right();
+  public:
+  void unsafe_arena_set_allocated_right(
+      ::testtree::serialize::serTreeNode* right);
+  ::testtree::serialize::serTreeNode* unsafe_arena_release_right();
+
+  // .testtree.serialize.serTreeNode parent = 5;
+  bool has_parent() const;
+  private:
+  bool _internal_has_parent() const;
+  public:
+  void clear_parent();
+  const ::testtree::serialize::serTreeNode& parent() const;
+  ::testtree::serialize::serTreeNode* release_parent();
+  ::testtree::serialize::serTreeNode* mutable_parent();
+  void set_allocated_parent(::testtree::serialize::serTreeNode* parent);
+  private:
+  const ::testtree::serialize::serTreeNode& _internal_parent() const;
+  ::testtree::serialize::serTreeNode* _internal_mutable_parent();
+  public:
+  void unsafe_arena_set_allocated_parent(
+      ::testtree::serialize::serTreeNode* parent);
+  ::testtree::serialize::serTreeNode* unsafe_arena_release_parent();
+
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serTreeNode)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::testtree::serialize::serValue* value_;
+  ::testtree::serialize::serKey* key_;
+  ::testtree::serialize::serTreeNode* left_;
+  ::testtree::serialize::serTreeNode* right_;
+  ::testtree::serialize::serTreeNode* parent_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Packet_2eproto;
+};
+// -------------------------------------------------------------------
+
+class serTree PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:testtree.serialize.serTree) */ {
+ public:
+  inline serTree() : serTree(nullptr) {}
+  virtual ~serTree();
+  explicit constexpr serTree(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  serTree(const serTree& from);
+  serTree(serTree&& from) noexcept
+    : serTree() {
+    *this = ::std::move(from);
+  }
+
+  inline serTree& operator=(const serTree& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline serTree& operator=(serTree&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const serTree& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const serTree* internal_default_instance() {
+    return reinterpret_cast<const serTree*>(
+               &_serTree_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(serTree& a, serTree& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(serTree* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(serTree* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline serTree* New() const final {
+    return CreateMaybeMessage<serTree>(nullptr);
+  }
+
+  serTree* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<serTree>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const serTree& from);
+  void MergeFrom(const serTree& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(serTree* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "testtree.serialize.serTree";
+  }
+  protected:
+  explicit serTree(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    return ::descriptor_table_Packet_2eproto_metadata_getter(kIndexInFileMessages);
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTreenodeFieldNumber = 1,
+    kValueTypeFieldNumber = 2,
+    kKeyTypeFieldNumber = 3,
+  };
+  // .testtree.serialize.serTreeNode treenode = 1;
+  bool has_treenode() const;
+  private:
+  bool _internal_has_treenode() const;
+  public:
+  void clear_treenode();
+  const ::testtree::serialize::serTreeNode& treenode() const;
+  ::testtree::serialize::serTreeNode* release_treenode();
+  ::testtree::serialize::serTreeNode* mutable_treenode();
+  void set_allocated_treenode(::testtree::serialize::serTreeNode* treenode);
+  private:
+  const ::testtree::serialize::serTreeNode& _internal_treenode() const;
+  ::testtree::serialize::serTreeNode* _internal_mutable_treenode();
+  public:
+  void unsafe_arena_set_allocated_treenode(
+      ::testtree::serialize::serTreeNode* treenode);
+  ::testtree::serialize::serTreeNode* unsafe_arena_release_treenode();
+
+  // .testtree.serialize.servtype_tree_t value_type = 2;
+  void clear_value_type();
+  ::testtree::serialize::servtype_tree_t value_type() const;
+  void set_value_type(::testtree::serialize::servtype_tree_t value);
+  private:
+  ::testtree::serialize::servtype_tree_t _internal_value_type() const;
+  void _internal_set_value_type(::testtree::serialize::servtype_tree_t value);
+  public:
+
+  // .testtree.serialize.servtype_tree_t key_type = 3;
+  void clear_key_type();
+  ::testtree::serialize::servtype_tree_t key_type() const;
+  void set_key_type(::testtree::serialize::servtype_tree_t value);
+  private:
+  ::testtree::serialize::servtype_tree_t _internal_key_type() const;
+  void _internal_set_key_type(::testtree::serialize::servtype_tree_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:testtree.serialize.serTree)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::testtree::serialize::serTreeNode* treenode_;
+  int value_type_;
+  int key_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Packet_2eproto;
 };
@@ -743,107 +1968,59 @@ class Chat PROTOBUF_FINAL :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// FirstPerson
-
-// fixed64 id = 1;
-inline void FirstPerson::clear_id() {
-  id_ = PROTOBUF_ULONGLONG(0);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 FirstPerson::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 FirstPerson::id() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.FirstPerson.id)
-  return _internal_id();
-}
-inline void FirstPerson::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  id_ = value;
-}
-inline void FirstPerson::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.FirstPerson.id)
-}
-
-// -------------------------------------------------------------------
-
-// SecondPerson
-
-// fixed64 id = 1;
-inline void SecondPerson::clear_id() {
-  id_ = PROTOBUF_ULONGLONG(0);
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 SecondPerson::_internal_id() const {
-  return id_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 SecondPerson::id() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.SecondPerson.id)
-  return _internal_id();
-}
-inline void SecondPerson::_internal_set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  
-  id_ = value;
-}
-inline void SecondPerson::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.SecondPerson.id)
-}
-
-// -------------------------------------------------------------------
-
-// Full_Message
+// serFull_Message
 
 // string data = 1;
-inline void Full_Message::clear_data() {
+inline void serFull_Message::clear_data() {
   data_.ClearToEmpty();
 }
-inline const std::string& Full_Message::data() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Full_Message.data)
+inline const std::string& serFull_Message::data() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serFull_Message.data)
   return _internal_data();
 }
-inline void Full_Message::set_data(const std::string& value) {
+inline void serFull_Message::set_data(const std::string& value) {
   _internal_set_data(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.Full_Message.data)
+  // @@protoc_insertion_point(field_set:testtree.serialize.serFull_Message.data)
 }
-inline std::string* Full_Message::mutable_data() {
-  // @@protoc_insertion_point(field_mutable:testtree.serialize.Full_Message.data)
+inline std::string* serFull_Message::mutable_data() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serFull_Message.data)
   return _internal_mutable_data();
 }
-inline const std::string& Full_Message::_internal_data() const {
+inline const std::string& serFull_Message::_internal_data() const {
   return data_.Get();
 }
-inline void Full_Message::_internal_set_data(const std::string& value) {
+inline void serFull_Message::_internal_set_data(const std::string& value) {
   
   data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
 }
-inline void Full_Message::set_data(std::string&& value) {
+inline void serFull_Message::set_data(std::string&& value) {
   
   data_.Set(
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.Full_Message.data)
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serFull_Message.data)
 }
-inline void Full_Message::set_data(const char* value) {
+inline void serFull_Message::set_data(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
-  // @@protoc_insertion_point(field_set_char:testtree.serialize.Full_Message.data)
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serFull_Message.data)
 }
-inline void Full_Message::set_data(const char* value,
+inline void serFull_Message::set_data(const char* value,
     size_t size) {
   
   data_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.Full_Message.data)
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serFull_Message.data)
 }
-inline std::string* Full_Message::_internal_mutable_data() {
+inline std::string* serFull_Message::_internal_mutable_data() {
   
   return data_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
 }
-inline std::string* Full_Message::release_data() {
-  // @@protoc_insertion_point(field_release:testtree.serialize.Full_Message.data)
+inline std::string* serFull_Message::release_data() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serFull_Message.data)
   return data_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void Full_Message::set_allocated_data(std::string* data) {
+inline void serFull_Message::set_allocated_data(std::string* data) {
   if (data != nullptr) {
     
   } else {
@@ -851,263 +2028,180 @@ inline void Full_Message::set_allocated_data(std::string* data) {
   }
   data_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data,
       GetArena());
-  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.Full_Message.data)
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serFull_Message.data)
 }
 
 // fixed64 chatId = 2;
-inline void Full_Message::clear_chatid() {
+inline void serFull_Message::clear_chatid() {
   chatid_ = PROTOBUF_ULONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Full_Message::_internal_chatid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serFull_Message::_internal_chatid() const {
   return chatid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Full_Message::chatid() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Full_Message.chatId)
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serFull_Message::chatid() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serFull_Message.chatId)
   return _internal_chatid();
 }
-inline void Full_Message::_internal_set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void serFull_Message::_internal_set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   
   chatid_ = value;
 }
-inline void Full_Message::set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void serFull_Message::set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_chatid(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.Full_Message.chatId)
+  // @@protoc_insertion_point(field_set:testtree.serialize.serFull_Message.chatId)
 }
 
 // fixed64 authorId = 3;
-inline void Full_Message::clear_authorid() {
+inline void serFull_Message::clear_authorid() {
   authorid_ = PROTOBUF_ULONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Full_Message::_internal_authorid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serFull_Message::_internal_authorid() const {
   return authorid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Full_Message::authorid() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Full_Message.authorId)
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serFull_Message::authorid() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serFull_Message.authorId)
   return _internal_authorid();
 }
-inline void Full_Message::_internal_set_authorid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void serFull_Message::_internal_set_authorid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   
   authorid_ = value;
 }
-inline void Full_Message::set_authorid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void serFull_Message::set_authorid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_authorid(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.Full_Message.authorId)
+  // @@protoc_insertion_point(field_set:testtree.serialize.serFull_Message.authorId)
 }
 
 // -------------------------------------------------------------------
 
-// Chat
+// serChat
 
 // fixed64 chatid = 1;
-inline void Chat::clear_chatid() {
+inline void serChat::clear_chatid() {
   chatid_ = PROTOBUF_ULONGLONG(0);
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Chat::_internal_chatid() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serChat::_internal_chatid() const {
   return chatid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::uint64 Chat::chatid() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Chat.chatid)
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serChat::chatid() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serChat.chatid)
   return _internal_chatid();
 }
-inline void Chat::_internal_set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void serChat::_internal_set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   
   chatid_ = value;
 }
-inline void Chat::set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+inline void serChat::set_chatid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_chatid(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.Chat.chatid)
+  // @@protoc_insertion_point(field_set:testtree.serialize.serChat.chatid)
 }
 
-// .testtree.serialize.FirstPerson frsprs_chat = 2;
-inline bool Chat::_internal_has_frsprs_chat() const {
-  return this != internal_default_instance() && frsprs_chat_ != nullptr;
+// .testtree.serialize.serUser user_chat = 2;
+inline bool serChat::_internal_has_user_chat() const {
+  return this != internal_default_instance() && user_chat_ != nullptr;
 }
-inline bool Chat::has_frsprs_chat() const {
-  return _internal_has_frsprs_chat();
+inline bool serChat::has_user_chat() const {
+  return _internal_has_user_chat();
 }
-inline void Chat::clear_frsprs_chat() {
-  if (GetArena() == nullptr && frsprs_chat_ != nullptr) {
-    delete frsprs_chat_;
+inline void serChat::clear_user_chat() {
+  if (GetArena() == nullptr && user_chat_ != nullptr) {
+    delete user_chat_;
   }
-  frsprs_chat_ = nullptr;
+  user_chat_ = nullptr;
 }
-inline const ::testtree::serialize::FirstPerson& Chat::_internal_frsprs_chat() const {
-  const ::testtree::serialize::FirstPerson* p = frsprs_chat_;
-  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::FirstPerson&>(
-      ::testtree::serialize::_FirstPerson_default_instance_);
+inline const ::testtree::serialize::serUser& serChat::_internal_user_chat() const {
+  const ::testtree::serialize::serUser* p = user_chat_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serUser&>(
+      ::testtree::serialize::_serUser_default_instance_);
 }
-inline const ::testtree::serialize::FirstPerson& Chat::frsprs_chat() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Chat.frsprs_chat)
-  return _internal_frsprs_chat();
+inline const ::testtree::serialize::serUser& serChat::user_chat() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serChat.user_chat)
+  return _internal_user_chat();
 }
-inline void Chat::unsafe_arena_set_allocated_frsprs_chat(
-    ::testtree::serialize::FirstPerson* frsprs_chat) {
+inline void serChat::unsafe_arena_set_allocated_user_chat(
+    ::testtree::serialize::serUser* user_chat) {
   if (GetArena() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(frsprs_chat_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(user_chat_);
   }
-  frsprs_chat_ = frsprs_chat;
-  if (frsprs_chat) {
+  user_chat_ = user_chat;
+  if (user_chat) {
     
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.Chat.frsprs_chat)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serChat.user_chat)
 }
-inline ::testtree::serialize::FirstPerson* Chat::release_frsprs_chat() {
+inline ::testtree::serialize::serUser* serChat::release_user_chat() {
   
-  ::testtree::serialize::FirstPerson* temp = frsprs_chat_;
-  frsprs_chat_ = nullptr;
+  ::testtree::serialize::serUser* temp = user_chat_;
+  user_chat_ = nullptr;
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::testtree::serialize::FirstPerson* Chat::unsafe_arena_release_frsprs_chat() {
-  // @@protoc_insertion_point(field_release:testtree.serialize.Chat.frsprs_chat)
+inline ::testtree::serialize::serUser* serChat::unsafe_arena_release_user_chat() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serChat.user_chat)
   
-  ::testtree::serialize::FirstPerson* temp = frsprs_chat_;
-  frsprs_chat_ = nullptr;
+  ::testtree::serialize::serUser* temp = user_chat_;
+  user_chat_ = nullptr;
   return temp;
 }
-inline ::testtree::serialize::FirstPerson* Chat::_internal_mutable_frsprs_chat() {
+inline ::testtree::serialize::serUser* serChat::_internal_mutable_user_chat() {
   
-  if (frsprs_chat_ == nullptr) {
-    auto* p = CreateMaybeMessage<::testtree::serialize::FirstPerson>(GetArena());
-    frsprs_chat_ = p;
+  if (user_chat_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serUser>(GetArena());
+    user_chat_ = p;
   }
-  return frsprs_chat_;
+  return user_chat_;
 }
-inline ::testtree::serialize::FirstPerson* Chat::mutable_frsprs_chat() {
-  // @@protoc_insertion_point(field_mutable:testtree.serialize.Chat.frsprs_chat)
-  return _internal_mutable_frsprs_chat();
+inline ::testtree::serialize::serUser* serChat::mutable_user_chat() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serChat.user_chat)
+  return _internal_mutable_user_chat();
 }
-inline void Chat::set_allocated_frsprs_chat(::testtree::serialize::FirstPerson* frsprs_chat) {
+inline void serChat::set_allocated_user_chat(::testtree::serialize::serUser* user_chat) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
-    delete frsprs_chat_;
+    delete user_chat_;
   }
-  if (frsprs_chat) {
+  if (user_chat) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(frsprs_chat);
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(user_chat);
     if (message_arena != submessage_arena) {
-      frsprs_chat = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, frsprs_chat, submessage_arena);
+      user_chat = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, user_chat, submessage_arena);
     }
     
   } else {
     
   }
-  frsprs_chat_ = frsprs_chat;
-  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.Chat.frsprs_chat)
+  user_chat_ = user_chat;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serChat.user_chat)
 }
 
-// .testtree.serialize.SecondPerson scndprs_chat = 3;
-inline bool Chat::_internal_has_scndprs_chat() const {
-  return this != internal_default_instance() && scndprs_chat_ != nullptr;
-}
-inline bool Chat::has_scndprs_chat() const {
-  return _internal_has_scndprs_chat();
-}
-inline void Chat::clear_scndprs_chat() {
-  if (GetArena() == nullptr && scndprs_chat_ != nullptr) {
-    delete scndprs_chat_;
-  }
-  scndprs_chat_ = nullptr;
-}
-inline const ::testtree::serialize::SecondPerson& Chat::_internal_scndprs_chat() const {
-  const ::testtree::serialize::SecondPerson* p = scndprs_chat_;
-  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::SecondPerson&>(
-      ::testtree::serialize::_SecondPerson_default_instance_);
-}
-inline const ::testtree::serialize::SecondPerson& Chat::scndprs_chat() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Chat.scndprs_chat)
-  return _internal_scndprs_chat();
-}
-inline void Chat::unsafe_arena_set_allocated_scndprs_chat(
-    ::testtree::serialize::SecondPerson* scndprs_chat) {
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(scndprs_chat_);
-  }
-  scndprs_chat_ = scndprs_chat;
-  if (scndprs_chat) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.Chat.scndprs_chat)
-}
-inline ::testtree::serialize::SecondPerson* Chat::release_scndprs_chat() {
-  
-  ::testtree::serialize::SecondPerson* temp = scndprs_chat_;
-  scndprs_chat_ = nullptr;
-  if (GetArena() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-  return temp;
-}
-inline ::testtree::serialize::SecondPerson* Chat::unsafe_arena_release_scndprs_chat() {
-  // @@protoc_insertion_point(field_release:testtree.serialize.Chat.scndprs_chat)
-  
-  ::testtree::serialize::SecondPerson* temp = scndprs_chat_;
-  scndprs_chat_ = nullptr;
-  return temp;
-}
-inline ::testtree::serialize::SecondPerson* Chat::_internal_mutable_scndprs_chat() {
-  
-  if (scndprs_chat_ == nullptr) {
-    auto* p = CreateMaybeMessage<::testtree::serialize::SecondPerson>(GetArena());
-    scndprs_chat_ = p;
-  }
-  return scndprs_chat_;
-}
-inline ::testtree::serialize::SecondPerson* Chat::mutable_scndprs_chat() {
-  // @@protoc_insertion_point(field_mutable:testtree.serialize.Chat.scndprs_chat)
-  return _internal_mutable_scndprs_chat();
-}
-inline void Chat::set_allocated_scndprs_chat(::testtree::serialize::SecondPerson* scndprs_chat) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
-  if (message_arena == nullptr) {
-    delete scndprs_chat_;
-  }
-  if (scndprs_chat) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(scndprs_chat);
-    if (message_arena != submessage_arena) {
-      scndprs_chat = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, scndprs_chat, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  scndprs_chat_ = scndprs_chat;
-  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.Chat.scndprs_chat)
-}
-
-// .testtree.serialize.Full_Message mes = 4;
-inline bool Chat::_internal_has_mes() const {
+// .testtree.serialize.serFull_Message mes = 4;
+inline bool serChat::_internal_has_mes() const {
   return this != internal_default_instance() && mes_ != nullptr;
 }
-inline bool Chat::has_mes() const {
+inline bool serChat::has_mes() const {
   return _internal_has_mes();
 }
-inline void Chat::clear_mes() {
+inline void serChat::clear_mes() {
   if (GetArena() == nullptr && mes_ != nullptr) {
     delete mes_;
   }
   mes_ = nullptr;
 }
-inline const ::testtree::serialize::Full_Message& Chat::_internal_mes() const {
-  const ::testtree::serialize::Full_Message* p = mes_;
-  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::Full_Message&>(
-      ::testtree::serialize::_Full_Message_default_instance_);
+inline const ::testtree::serialize::serFull_Message& serChat::_internal_mes() const {
+  const ::testtree::serialize::serFull_Message* p = mes_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serFull_Message&>(
+      ::testtree::serialize::_serFull_Message_default_instance_);
 }
-inline const ::testtree::serialize::Full_Message& Chat::mes() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Chat.mes)
+inline const ::testtree::serialize::serFull_Message& serChat::mes() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serChat.mes)
   return _internal_mes();
 }
-inline void Chat::unsafe_arena_set_allocated_mes(
-    ::testtree::serialize::Full_Message* mes) {
+inline void serChat::unsafe_arena_set_allocated_mes(
+    ::testtree::serialize::serFull_Message* mes) {
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(mes_);
   }
@@ -1117,37 +2211,37 @@ inline void Chat::unsafe_arena_set_allocated_mes(
   } else {
     
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.Chat.mes)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serChat.mes)
 }
-inline ::testtree::serialize::Full_Message* Chat::release_mes() {
+inline ::testtree::serialize::serFull_Message* serChat::release_mes() {
   
-  ::testtree::serialize::Full_Message* temp = mes_;
+  ::testtree::serialize::serFull_Message* temp = mes_;
   mes_ = nullptr;
   if (GetArena() != nullptr) {
     temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
   return temp;
 }
-inline ::testtree::serialize::Full_Message* Chat::unsafe_arena_release_mes() {
-  // @@protoc_insertion_point(field_release:testtree.serialize.Chat.mes)
+inline ::testtree::serialize::serFull_Message* serChat::unsafe_arena_release_mes() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serChat.mes)
   
-  ::testtree::serialize::Full_Message* temp = mes_;
+  ::testtree::serialize::serFull_Message* temp = mes_;
   mes_ = nullptr;
   return temp;
 }
-inline ::testtree::serialize::Full_Message* Chat::_internal_mutable_mes() {
+inline ::testtree::serialize::serFull_Message* serChat::_internal_mutable_mes() {
   
   if (mes_ == nullptr) {
-    auto* p = CreateMaybeMessage<::testtree::serialize::Full_Message>(GetArena());
+    auto* p = CreateMaybeMessage<::testtree::serialize::serFull_Message>(GetArena());
     mes_ = p;
   }
   return mes_;
 }
-inline ::testtree::serialize::Full_Message* Chat::mutable_mes() {
-  // @@protoc_insertion_point(field_mutable:testtree.serialize.Chat.mes)
+inline ::testtree::serialize::serFull_Message* serChat::mutable_mes() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serChat.mes)
   return _internal_mutable_mes();
 }
-inline void Chat::set_allocated_mes(::testtree::serialize::Full_Message* mes) {
+inline void serChat::set_allocated_mes(::testtree::serialize::serFull_Message* mes) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
   if (message_arena == nullptr) {
     delete mes_;
@@ -1164,60 +2258,60 @@ inline void Chat::set_allocated_mes(::testtree::serialize::Full_Message* mes) {
     
   }
   mes_ = mes;
-  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.Chat.mes)
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serChat.mes)
 }
 
 // string fulltxt = 5;
-inline void Chat::clear_fulltxt() {
+inline void serChat::clear_fulltxt() {
   fulltxt_.ClearToEmpty();
 }
-inline const std::string& Chat::fulltxt() const {
-  // @@protoc_insertion_point(field_get:testtree.serialize.Chat.fulltxt)
+inline const std::string& serChat::fulltxt() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serChat.fulltxt)
   return _internal_fulltxt();
 }
-inline void Chat::set_fulltxt(const std::string& value) {
+inline void serChat::set_fulltxt(const std::string& value) {
   _internal_set_fulltxt(value);
-  // @@protoc_insertion_point(field_set:testtree.serialize.Chat.fulltxt)
+  // @@protoc_insertion_point(field_set:testtree.serialize.serChat.fulltxt)
 }
-inline std::string* Chat::mutable_fulltxt() {
-  // @@protoc_insertion_point(field_mutable:testtree.serialize.Chat.fulltxt)
+inline std::string* serChat::mutable_fulltxt() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serChat.fulltxt)
   return _internal_mutable_fulltxt();
 }
-inline const std::string& Chat::_internal_fulltxt() const {
+inline const std::string& serChat::_internal_fulltxt() const {
   return fulltxt_.Get();
 }
-inline void Chat::_internal_set_fulltxt(const std::string& value) {
+inline void serChat::_internal_set_fulltxt(const std::string& value) {
   
   fulltxt_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
 }
-inline void Chat::set_fulltxt(std::string&& value) {
+inline void serChat::set_fulltxt(std::string&& value) {
   
   fulltxt_.Set(
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.Chat.fulltxt)
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serChat.fulltxt)
 }
-inline void Chat::set_fulltxt(const char* value) {
+inline void serChat::set_fulltxt(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
   fulltxt_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
-  // @@protoc_insertion_point(field_set_char:testtree.serialize.Chat.fulltxt)
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serChat.fulltxt)
 }
-inline void Chat::set_fulltxt(const char* value,
+inline void serChat::set_fulltxt(const char* value,
     size_t size) {
   
   fulltxt_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.Chat.fulltxt)
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serChat.fulltxt)
 }
-inline std::string* Chat::_internal_mutable_fulltxt() {
+inline std::string* serChat::_internal_mutable_fulltxt() {
   
   return fulltxt_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
 }
-inline std::string* Chat::release_fulltxt() {
-  // @@protoc_insertion_point(field_release:testtree.serialize.Chat.fulltxt)
+inline std::string* serChat::release_fulltxt() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serChat.fulltxt)
   return fulltxt_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void Chat::set_allocated_fulltxt(std::string* fulltxt) {
+inline void serChat::set_allocated_fulltxt(std::string* fulltxt) {
   if (fulltxt != nullptr) {
     
   } else {
@@ -1225,7 +2319,1841 @@ inline void Chat::set_allocated_fulltxt(std::string* fulltxt) {
   }
   fulltxt_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), fulltxt,
       GetArena());
-  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.Chat.fulltxt)
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serChat.fulltxt)
+}
+
+// -------------------------------------------------------------------
+
+// serBlock
+
+// fixed64 nBlockNum = 1;
+inline void serBlock::clear_nblocknum() {
+  nblocknum_ = PROTOBUF_ULONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlock::_internal_nblocknum() const {
+  return nblocknum_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlock::nblocknum() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlock.nBlockNum)
+  return _internal_nblocknum();
+}
+inline void serBlock::_internal_set_nblocknum(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  nblocknum_ = value;
+}
+inline void serBlock::set_nblocknum(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_nblocknum(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlock.nBlockNum)
+}
+
+// fixed64 nNonce = 2;
+inline void serBlock::clear_nnonce() {
+  nnonce_ = PROTOBUF_ULONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlock::_internal_nnonce() const {
+  return nnonce_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlock::nnonce() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlock.nNonce)
+  return _internal_nnonce();
+}
+inline void serBlock::_internal_set_nnonce(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  nnonce_ = value;
+}
+inline void serBlock::set_nnonce(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_nnonce(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlock.nNonce)
+}
+
+// string sData = 3;
+inline void serBlock::clear_sdata() {
+  sdata_.ClearToEmpty();
+}
+inline const std::string& serBlock::sdata() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlock.sData)
+  return _internal_sdata();
+}
+inline void serBlock::set_sdata(const std::string& value) {
+  _internal_set_sdata(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlock.sData)
+}
+inline std::string* serBlock::mutable_sdata() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serBlock.sData)
+  return _internal_mutable_sdata();
+}
+inline const std::string& serBlock::_internal_sdata() const {
+  return sdata_.Get();
+}
+inline void serBlock::_internal_set_sdata(const std::string& value) {
+  
+  sdata_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serBlock::set_sdata(std::string&& value) {
+  
+  sdata_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serBlock.sData)
+}
+inline void serBlock::set_sdata(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  sdata_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serBlock.sData)
+}
+inline void serBlock::set_sdata(const char* value,
+    size_t size) {
+  
+  sdata_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serBlock.sData)
+}
+inline std::string* serBlock::_internal_mutable_sdata() {
+  
+  return sdata_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serBlock::release_sdata() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serBlock.sData)
+  return sdata_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serBlock::set_allocated_sdata(std::string* sdata) {
+  if (sdata != nullptr) {
+    
+  } else {
+    
+  }
+  sdata_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), sdata,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serBlock.sData)
+}
+
+// string sHash = 4;
+inline void serBlock::clear_shash() {
+  shash_.ClearToEmpty();
+}
+inline const std::string& serBlock::shash() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlock.sHash)
+  return _internal_shash();
+}
+inline void serBlock::set_shash(const std::string& value) {
+  _internal_set_shash(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlock.sHash)
+}
+inline std::string* serBlock::mutable_shash() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serBlock.sHash)
+  return _internal_mutable_shash();
+}
+inline const std::string& serBlock::_internal_shash() const {
+  return shash_.Get();
+}
+inline void serBlock::_internal_set_shash(const std::string& value) {
+  
+  shash_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serBlock::set_shash(std::string&& value) {
+  
+  shash_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serBlock.sHash)
+}
+inline void serBlock::set_shash(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  shash_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serBlock.sHash)
+}
+inline void serBlock::set_shash(const char* value,
+    size_t size) {
+  
+  shash_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serBlock.sHash)
+}
+inline std::string* serBlock::_internal_mutable_shash() {
+  
+  return shash_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serBlock::release_shash() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serBlock.sHash)
+  return shash_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serBlock::set_allocated_shash(std::string* shash) {
+  if (shash != nullptr) {
+    
+  } else {
+    
+  }
+  shash_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), shash,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serBlock.sHash)
+}
+
+// fixed64 tTime = 5;
+inline void serBlock::clear_ttime() {
+  ttime_ = PROTOBUF_ULONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlock::_internal_ttime() const {
+  return ttime_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlock::ttime() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlock.tTime)
+  return _internal_ttime();
+}
+inline void serBlock::_internal_set_ttime(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  ttime_ = value;
+}
+inline void serBlock::set_ttime(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_ttime(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlock.tTime)
+}
+
+// string prevHash = 6;
+inline void serBlock::clear_prevhash() {
+  prevhash_.ClearToEmpty();
+}
+inline const std::string& serBlock::prevhash() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlock.prevHash)
+  return _internal_prevhash();
+}
+inline void serBlock::set_prevhash(const std::string& value) {
+  _internal_set_prevhash(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlock.prevHash)
+}
+inline std::string* serBlock::mutable_prevhash() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serBlock.prevHash)
+  return _internal_mutable_prevhash();
+}
+inline const std::string& serBlock::_internal_prevhash() const {
+  return prevhash_.Get();
+}
+inline void serBlock::_internal_set_prevhash(const std::string& value) {
+  
+  prevhash_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serBlock::set_prevhash(std::string&& value) {
+  
+  prevhash_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serBlock.prevHash)
+}
+inline void serBlock::set_prevhash(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  prevhash_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serBlock.prevHash)
+}
+inline void serBlock::set_prevhash(const char* value,
+    size_t size) {
+  
+  prevhash_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serBlock.prevHash)
+}
+inline std::string* serBlock::_internal_mutable_prevhash() {
+  
+  return prevhash_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serBlock::release_prevhash() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serBlock.prevHash)
+  return prevhash_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serBlock::set_allocated_prevhash(std::string* prevhash) {
+  if (prevhash != nullptr) {
+    
+  } else {
+    
+  }
+  prevhash_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), prevhash,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serBlock.prevHash)
+}
+
+// -------------------------------------------------------------------
+
+// serBlockchain
+
+// fixed64 BlockCount = 1;
+inline void serBlockchain::clear_blockcount() {
+  blockcount_ = PROTOBUF_ULONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlockchain::_internal_blockcount() const {
+  return blockcount_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serBlockchain::blockcount() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlockchain.BlockCount)
+  return _internal_blockcount();
+}
+inline void serBlockchain::_internal_set_blockcount(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  blockcount_ = value;
+}
+inline void serBlockchain::set_blockcount(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_blockcount(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlockchain.BlockCount)
+}
+
+// fixed32 nDifficulty = 2;
+inline void serBlockchain::clear_ndifficulty() {
+  ndifficulty_ = 0u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 serBlockchain::_internal_ndifficulty() const {
+  return ndifficulty_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 serBlockchain::ndifficulty() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlockchain.nDifficulty)
+  return _internal_ndifficulty();
+}
+inline void serBlockchain::_internal_set_ndifficulty(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  
+  ndifficulty_ = value;
+}
+inline void serBlockchain::set_ndifficulty(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_ndifficulty(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serBlockchain.nDifficulty)
+}
+
+// repeated .testtree.serialize.serBlock block = 3;
+inline int serBlockchain::_internal_block_size() const {
+  return block_.size();
+}
+inline int serBlockchain::block_size() const {
+  return _internal_block_size();
+}
+inline void serBlockchain::clear_block() {
+  block_.Clear();
+}
+inline ::testtree::serialize::serBlock* serBlockchain::mutable_block(int index) {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serBlockchain.block)
+  return block_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::testtree::serialize::serBlock >*
+serBlockchain::mutable_block() {
+  // @@protoc_insertion_point(field_mutable_list:testtree.serialize.serBlockchain.block)
+  return &block_;
+}
+inline const ::testtree::serialize::serBlock& serBlockchain::_internal_block(int index) const {
+  return block_.Get(index);
+}
+inline const ::testtree::serialize::serBlock& serBlockchain::block(int index) const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serBlockchain.block)
+  return _internal_block(index);
+}
+inline ::testtree::serialize::serBlock* serBlockchain::_internal_add_block() {
+  return block_.Add();
+}
+inline ::testtree::serialize::serBlock* serBlockchain::add_block() {
+  // @@protoc_insertion_point(field_add:testtree.serialize.serBlockchain.block)
+  return _internal_add_block();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::testtree::serialize::serBlock >&
+serBlockchain::block() const {
+  // @@protoc_insertion_point(field_list:testtree.serialize.serBlockchain.block)
+  return block_;
+}
+
+// -------------------------------------------------------------------
+
+// serUser
+
+// string nickname = 1;
+inline void serUser::clear_nickname() {
+  nickname_.ClearToEmpty();
+}
+inline const std::string& serUser::nickname() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serUser.nickname)
+  return _internal_nickname();
+}
+inline void serUser::set_nickname(const std::string& value) {
+  _internal_set_nickname(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serUser.nickname)
+}
+inline std::string* serUser::mutable_nickname() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serUser.nickname)
+  return _internal_mutable_nickname();
+}
+inline const std::string& serUser::_internal_nickname() const {
+  return nickname_.Get();
+}
+inline void serUser::_internal_set_nickname(const std::string& value) {
+  
+  nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serUser::set_nickname(std::string&& value) {
+  
+  nickname_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serUser.nickname)
+}
+inline void serUser::set_nickname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serUser.nickname)
+}
+inline void serUser::set_nickname(const char* value,
+    size_t size) {
+  
+  nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serUser.nickname)
+}
+inline std::string* serUser::_internal_mutable_nickname() {
+  
+  return nickname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serUser::release_nickname() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serUser.nickname)
+  return nickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serUser::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
+    
+  } else {
+    
+  }
+  nickname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serUser.nickname)
+}
+
+// string aboutYourself = 2;
+inline void serUser::clear_aboutyourself() {
+  aboutyourself_.ClearToEmpty();
+}
+inline const std::string& serUser::aboutyourself() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serUser.aboutYourself)
+  return _internal_aboutyourself();
+}
+inline void serUser::set_aboutyourself(const std::string& value) {
+  _internal_set_aboutyourself(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serUser.aboutYourself)
+}
+inline std::string* serUser::mutable_aboutyourself() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serUser.aboutYourself)
+  return _internal_mutable_aboutyourself();
+}
+inline const std::string& serUser::_internal_aboutyourself() const {
+  return aboutyourself_.Get();
+}
+inline void serUser::_internal_set_aboutyourself(const std::string& value) {
+  
+  aboutyourself_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serUser::set_aboutyourself(std::string&& value) {
+  
+  aboutyourself_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serUser.aboutYourself)
+}
+inline void serUser::set_aboutyourself(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  aboutyourself_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serUser.aboutYourself)
+}
+inline void serUser::set_aboutyourself(const char* value,
+    size_t size) {
+  
+  aboutyourself_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serUser.aboutYourself)
+}
+inline std::string* serUser::_internal_mutable_aboutyourself() {
+  
+  return aboutyourself_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serUser::release_aboutyourself() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serUser.aboutYourself)
+  return aboutyourself_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serUser::set_allocated_aboutyourself(std::string* aboutyourself) {
+  if (aboutyourself != nullptr) {
+    
+  } else {
+    
+  }
+  aboutyourself_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), aboutyourself,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serUser.aboutYourself)
+}
+
+// string firstName = 3;
+inline void serUser::clear_firstname() {
+  firstname_.ClearToEmpty();
+}
+inline const std::string& serUser::firstname() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serUser.firstName)
+  return _internal_firstname();
+}
+inline void serUser::set_firstname(const std::string& value) {
+  _internal_set_firstname(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serUser.firstName)
+}
+inline std::string* serUser::mutable_firstname() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serUser.firstName)
+  return _internal_mutable_firstname();
+}
+inline const std::string& serUser::_internal_firstname() const {
+  return firstname_.Get();
+}
+inline void serUser::_internal_set_firstname(const std::string& value) {
+  
+  firstname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serUser::set_firstname(std::string&& value) {
+  
+  firstname_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serUser.firstName)
+}
+inline void serUser::set_firstname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  firstname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serUser.firstName)
+}
+inline void serUser::set_firstname(const char* value,
+    size_t size) {
+  
+  firstname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serUser.firstName)
+}
+inline std::string* serUser::_internal_mutable_firstname() {
+  
+  return firstname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serUser::release_firstname() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serUser.firstName)
+  return firstname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serUser::set_allocated_firstname(std::string* firstname) {
+  if (firstname != nullptr) {
+    
+  } else {
+    
+  }
+  firstname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), firstname,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serUser.firstName)
+}
+
+// string secondName = 4;
+inline void serUser::clear_secondname() {
+  secondname_.ClearToEmpty();
+}
+inline const std::string& serUser::secondname() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serUser.secondName)
+  return _internal_secondname();
+}
+inline void serUser::set_secondname(const std::string& value) {
+  _internal_set_secondname(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serUser.secondName)
+}
+inline std::string* serUser::mutable_secondname() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serUser.secondName)
+  return _internal_mutable_secondname();
+}
+inline const std::string& serUser::_internal_secondname() const {
+  return secondname_.Get();
+}
+inline void serUser::_internal_set_secondname(const std::string& value) {
+  
+  secondname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serUser::set_secondname(std::string&& value) {
+  
+  secondname_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serUser.secondName)
+}
+inline void serUser::set_secondname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  secondname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serUser.secondName)
+}
+inline void serUser::set_secondname(const char* value,
+    size_t size) {
+  
+  secondname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serUser.secondName)
+}
+inline std::string* serUser::_internal_mutable_secondname() {
+  
+  return secondname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serUser::release_secondname() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serUser.secondName)
+  return secondname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void serUser::set_allocated_secondname(std::string* secondname) {
+  if (secondname != nullptr) {
+    
+  } else {
+    
+  }
+  secondname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), secondname,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serUser.secondName)
+}
+
+// fixed64 userId = 5;
+inline void serUser::clear_userid() {
+  userid_ = PROTOBUF_ULONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serUser::_internal_userid() const {
+  return userid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serUser::userid() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serUser.userId)
+  return _internal_userid();
+}
+inline void serUser::_internal_set_userid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  
+  userid_ = value;
+}
+inline void serUser::set_userid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_userid(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serUser.userId)
+}
+
+// -------------------------------------------------------------------
+
+// serKey
+
+// fixed64 decimal = 1;
+inline bool serKey::_internal_has_decimal() const {
+  return key_data_case() == kDecimal;
+}
+inline bool serKey::has_decimal() const {
+  return _internal_has_decimal();
+}
+inline void serKey::set_has_decimal() {
+  _oneof_case_[0] = kDecimal;
+}
+inline void serKey::clear_decimal() {
+  if (_internal_has_decimal()) {
+    key_data_.decimal_ = PROTOBUF_ULONGLONG(0);
+    clear_has_key_data();
+  }
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serKey::_internal_decimal() const {
+  if (_internal_has_decimal()) {
+    return key_data_.decimal_;
+  }
+  return PROTOBUF_ULONGLONG(0);
+}
+inline void serKey::_internal_set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  if (!_internal_has_decimal()) {
+    clear_key_data();
+    set_has_decimal();
+  }
+  key_data_.decimal_ = value;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serKey::decimal() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serKey.decimal)
+  return _internal_decimal();
+}
+inline void serKey::set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_decimal(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serKey.decimal)
+}
+
+// double real = 2;
+inline bool serKey::_internal_has_real() const {
+  return key_data_case() == kReal;
+}
+inline bool serKey::has_real() const {
+  return _internal_has_real();
+}
+inline void serKey::set_has_real() {
+  _oneof_case_[0] = kReal;
+}
+inline void serKey::clear_real() {
+  if (_internal_has_real()) {
+    key_data_.real_ = 0;
+    clear_has_key_data();
+  }
+}
+inline double serKey::_internal_real() const {
+  if (_internal_has_real()) {
+    return key_data_.real_;
+  }
+  return 0;
+}
+inline void serKey::_internal_set_real(double value) {
+  if (!_internal_has_real()) {
+    clear_key_data();
+    set_has_real();
+  }
+  key_data_.real_ = value;
+}
+inline double serKey::real() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serKey.real)
+  return _internal_real();
+}
+inline void serKey::set_real(double value) {
+  _internal_set_real(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serKey.real)
+}
+
+// string str = 3;
+inline bool serKey::_internal_has_str() const {
+  return key_data_case() == kStr;
+}
+inline bool serKey::has_str() const {
+  return _internal_has_str();
+}
+inline void serKey::set_has_str() {
+  _oneof_case_[0] = kStr;
+}
+inline void serKey::clear_str() {
+  if (_internal_has_str()) {
+    key_data_.str_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+    clear_has_key_data();
+  }
+}
+inline const std::string& serKey::str() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serKey.str)
+  return _internal_str();
+}
+inline void serKey::set_str(const std::string& value) {
+  _internal_set_str(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serKey.str)
+}
+inline std::string* serKey::mutable_str() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serKey.str)
+  return _internal_mutable_str();
+}
+inline const std::string& serKey::_internal_str() const {
+  if (_internal_has_str()) {
+    return key_data_.str_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void serKey::_internal_set_str(const std::string& value) {
+  if (!_internal_has_str()) {
+    clear_key_data();
+    set_has_str();
+    key_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  key_data_.str_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serKey::set_str(std::string&& value) {
+  // @@protoc_insertion_point(field_set:testtree.serialize.serKey.str)
+  if (!_internal_has_str()) {
+    clear_key_data();
+    set_has_str();
+    key_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  key_data_.str_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serKey.str)
+}
+inline void serKey::set_str(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  if (!_internal_has_str()) {
+    clear_key_data();
+    set_has_str();
+    key_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  key_data_.str_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{},
+      ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serKey.str)
+}
+inline void serKey::set_str(const char* value,
+                             size_t size) {
+  if (!_internal_has_str()) {
+    clear_key_data();
+    set_has_str();
+    key_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  key_data_.str_.Set(
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size),
+      GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serKey.str)
+}
+inline std::string* serKey::_internal_mutable_str() {
+  if (!_internal_has_str()) {
+    clear_key_data();
+    set_has_str();
+    key_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  return key_data_.str_.Mutable(
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serKey::release_str() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serKey.str)
+  if (_internal_has_str()) {
+    clear_has_key_data();
+    return key_data_.str_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  } else {
+    return nullptr;
+  }
+}
+inline void serKey::set_allocated_str(std::string* str) {
+  if (has_key_data()) {
+    clear_key_data();
+  }
+  if (str != nullptr) {
+    set_has_str();
+    key_data_.str_.UnsafeSetDefault(str);
+    ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena();
+    if (arena != nullptr) {
+      arena->Own(str);
+    }
+  }
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serKey.str)
+}
+
+// .testtree.serialize.serBlockchain blockchain = 4;
+inline bool serKey::_internal_has_blockchain() const {
+  return key_data_case() == kBlockchain;
+}
+inline bool serKey::has_blockchain() const {
+  return _internal_has_blockchain();
+}
+inline void serKey::set_has_blockchain() {
+  _oneof_case_[0] = kBlockchain;
+}
+inline void serKey::clear_blockchain() {
+  if (_internal_has_blockchain()) {
+    if (GetArena() == nullptr) {
+      delete key_data_.blockchain_;
+    }
+    clear_has_key_data();
+  }
+}
+inline ::testtree::serialize::serBlockchain* serKey::release_blockchain() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serKey.blockchain)
+  if (_internal_has_blockchain()) {
+    clear_has_key_data();
+      ::testtree::serialize::serBlockchain* temp = key_data_.blockchain_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    key_data_.blockchain_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::testtree::serialize::serBlockchain& serKey::_internal_blockchain() const {
+  return _internal_has_blockchain()
+      ? *key_data_.blockchain_
+      : reinterpret_cast< ::testtree::serialize::serBlockchain&>(::testtree::serialize::_serBlockchain_default_instance_);
+}
+inline const ::testtree::serialize::serBlockchain& serKey::blockchain() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serKey.blockchain)
+  return _internal_blockchain();
+}
+inline ::testtree::serialize::serBlockchain* serKey::unsafe_arena_release_blockchain() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:testtree.serialize.serKey.blockchain)
+  if (_internal_has_blockchain()) {
+    clear_has_key_data();
+    ::testtree::serialize::serBlockchain* temp = key_data_.blockchain_;
+    key_data_.blockchain_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void serKey::unsafe_arena_set_allocated_blockchain(::testtree::serialize::serBlockchain* blockchain) {
+  clear_key_data();
+  if (blockchain) {
+    set_has_blockchain();
+    key_data_.blockchain_ = blockchain;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serKey.blockchain)
+}
+inline ::testtree::serialize::serBlockchain* serKey::_internal_mutable_blockchain() {
+  if (!_internal_has_blockchain()) {
+    clear_key_data();
+    set_has_blockchain();
+    key_data_.blockchain_ = CreateMaybeMessage< ::testtree::serialize::serBlockchain >(GetArena());
+  }
+  return key_data_.blockchain_;
+}
+inline ::testtree::serialize::serBlockchain* serKey::mutable_blockchain() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serKey.blockchain)
+  return _internal_mutable_blockchain();
+}
+
+// .testtree.serialize.serUser seruser = 5;
+inline bool serKey::_internal_has_seruser() const {
+  return key_data_case() == kSeruser;
+}
+inline bool serKey::has_seruser() const {
+  return _internal_has_seruser();
+}
+inline void serKey::set_has_seruser() {
+  _oneof_case_[0] = kSeruser;
+}
+inline void serKey::clear_seruser() {
+  if (_internal_has_seruser()) {
+    if (GetArena() == nullptr) {
+      delete key_data_.seruser_;
+    }
+    clear_has_key_data();
+  }
+}
+inline ::testtree::serialize::serUser* serKey::release_seruser() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serKey.seruser)
+  if (_internal_has_seruser()) {
+    clear_has_key_data();
+      ::testtree::serialize::serUser* temp = key_data_.seruser_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    key_data_.seruser_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::testtree::serialize::serUser& serKey::_internal_seruser() const {
+  return _internal_has_seruser()
+      ? *key_data_.seruser_
+      : reinterpret_cast< ::testtree::serialize::serUser&>(::testtree::serialize::_serUser_default_instance_);
+}
+inline const ::testtree::serialize::serUser& serKey::seruser() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serKey.seruser)
+  return _internal_seruser();
+}
+inline ::testtree::serialize::serUser* serKey::unsafe_arena_release_seruser() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:testtree.serialize.serKey.seruser)
+  if (_internal_has_seruser()) {
+    clear_has_key_data();
+    ::testtree::serialize::serUser* temp = key_data_.seruser_;
+    key_data_.seruser_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void serKey::unsafe_arena_set_allocated_seruser(::testtree::serialize::serUser* seruser) {
+  clear_key_data();
+  if (seruser) {
+    set_has_seruser();
+    key_data_.seruser_ = seruser;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serKey.seruser)
+}
+inline ::testtree::serialize::serUser* serKey::_internal_mutable_seruser() {
+  if (!_internal_has_seruser()) {
+    clear_key_data();
+    set_has_seruser();
+    key_data_.seruser_ = CreateMaybeMessage< ::testtree::serialize::serUser >(GetArena());
+  }
+  return key_data_.seruser_;
+}
+inline ::testtree::serialize::serUser* serKey::mutable_seruser() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serKey.seruser)
+  return _internal_mutable_seruser();
+}
+
+inline bool serKey::has_key_data() const {
+  return key_data_case() != KEY_DATA_NOT_SET;
+}
+inline void serKey::clear_has_key_data() {
+  _oneof_case_[0] = KEY_DATA_NOT_SET;
+}
+inline serKey::KeyDataCase serKey::key_data_case() const {
+  return serKey::KeyDataCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// serValue
+
+// fixed64 decimal = 1;
+inline bool serValue::_internal_has_decimal() const {
+  return value_data_case() == kDecimal;
+}
+inline bool serValue::has_decimal() const {
+  return _internal_has_decimal();
+}
+inline void serValue::set_has_decimal() {
+  _oneof_case_[0] = kDecimal;
+}
+inline void serValue::clear_decimal() {
+  if (_internal_has_decimal()) {
+    value_data_.decimal_ = PROTOBUF_ULONGLONG(0);
+    clear_has_value_data();
+  }
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serValue::_internal_decimal() const {
+  if (_internal_has_decimal()) {
+    return value_data_.decimal_;
+  }
+  return PROTOBUF_ULONGLONG(0);
+}
+inline void serValue::_internal_set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  if (!_internal_has_decimal()) {
+    clear_value_data();
+    set_has_decimal();
+  }
+  value_data_.decimal_ = value;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 serValue::decimal() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serValue.decimal)
+  return _internal_decimal();
+}
+inline void serValue::set_decimal(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _internal_set_decimal(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serValue.decimal)
+}
+
+// double real = 2;
+inline bool serValue::_internal_has_real() const {
+  return value_data_case() == kReal;
+}
+inline bool serValue::has_real() const {
+  return _internal_has_real();
+}
+inline void serValue::set_has_real() {
+  _oneof_case_[0] = kReal;
+}
+inline void serValue::clear_real() {
+  if (_internal_has_real()) {
+    value_data_.real_ = 0;
+    clear_has_value_data();
+  }
+}
+inline double serValue::_internal_real() const {
+  if (_internal_has_real()) {
+    return value_data_.real_;
+  }
+  return 0;
+}
+inline void serValue::_internal_set_real(double value) {
+  if (!_internal_has_real()) {
+    clear_value_data();
+    set_has_real();
+  }
+  value_data_.real_ = value;
+}
+inline double serValue::real() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serValue.real)
+  return _internal_real();
+}
+inline void serValue::set_real(double value) {
+  _internal_set_real(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serValue.real)
+}
+
+// string str = 3;
+inline bool serValue::_internal_has_str() const {
+  return value_data_case() == kStr;
+}
+inline bool serValue::has_str() const {
+  return _internal_has_str();
+}
+inline void serValue::set_has_str() {
+  _oneof_case_[0] = kStr;
+}
+inline void serValue::clear_str() {
+  if (_internal_has_str()) {
+    value_data_.str_.Destroy(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+    clear_has_value_data();
+  }
+}
+inline const std::string& serValue::str() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serValue.str)
+  return _internal_str();
+}
+inline void serValue::set_str(const std::string& value) {
+  _internal_set_str(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serValue.str)
+}
+inline std::string* serValue::mutable_str() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serValue.str)
+  return _internal_mutable_str();
+}
+inline const std::string& serValue::_internal_str() const {
+  if (_internal_has_str()) {
+    return value_data_.str_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void serValue::_internal_set_str(const std::string& value) {
+  if (!_internal_has_str()) {
+    clear_value_data();
+    set_has_str();
+    value_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  value_data_.str_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void serValue::set_str(std::string&& value) {
+  // @@protoc_insertion_point(field_set:testtree.serialize.serValue.str)
+  if (!_internal_has_str()) {
+    clear_value_data();
+    set_has_str();
+    value_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  value_data_.str_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:testtree.serialize.serValue.str)
+}
+inline void serValue::set_str(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  if (!_internal_has_str()) {
+    clear_value_data();
+    set_has_str();
+    value_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  value_data_.str_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{},
+      ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:testtree.serialize.serValue.str)
+}
+inline void serValue::set_str(const char* value,
+                             size_t size) {
+  if (!_internal_has_str()) {
+    clear_value_data();
+    set_has_str();
+    value_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  value_data_.str_.Set(
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size),
+      GetArena());
+  // @@protoc_insertion_point(field_set_pointer:testtree.serialize.serValue.str)
+}
+inline std::string* serValue::_internal_mutable_str() {
+  if (!_internal_has_str()) {
+    clear_value_data();
+    set_has_str();
+    value_data_.str_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  return value_data_.str_.Mutable(
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* serValue::release_str() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serValue.str)
+  if (_internal_has_str()) {
+    clear_has_value_data();
+    return value_data_.str_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  } else {
+    return nullptr;
+  }
+}
+inline void serValue::set_allocated_str(std::string* str) {
+  if (has_value_data()) {
+    clear_value_data();
+  }
+  if (str != nullptr) {
+    set_has_str();
+    value_data_.str_.UnsafeSetDefault(str);
+    ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena();
+    if (arena != nullptr) {
+      arena->Own(str);
+    }
+  }
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serValue.str)
+}
+
+// .testtree.serialize.serBlockchain blockchain = 4;
+inline bool serValue::_internal_has_blockchain() const {
+  return value_data_case() == kBlockchain;
+}
+inline bool serValue::has_blockchain() const {
+  return _internal_has_blockchain();
+}
+inline void serValue::set_has_blockchain() {
+  _oneof_case_[0] = kBlockchain;
+}
+inline void serValue::clear_blockchain() {
+  if (_internal_has_blockchain()) {
+    if (GetArena() == nullptr) {
+      delete value_data_.blockchain_;
+    }
+    clear_has_value_data();
+  }
+}
+inline ::testtree::serialize::serBlockchain* serValue::release_blockchain() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serValue.blockchain)
+  if (_internal_has_blockchain()) {
+    clear_has_value_data();
+      ::testtree::serialize::serBlockchain* temp = value_data_.blockchain_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    value_data_.blockchain_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::testtree::serialize::serBlockchain& serValue::_internal_blockchain() const {
+  return _internal_has_blockchain()
+      ? *value_data_.blockchain_
+      : reinterpret_cast< ::testtree::serialize::serBlockchain&>(::testtree::serialize::_serBlockchain_default_instance_);
+}
+inline const ::testtree::serialize::serBlockchain& serValue::blockchain() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serValue.blockchain)
+  return _internal_blockchain();
+}
+inline ::testtree::serialize::serBlockchain* serValue::unsafe_arena_release_blockchain() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:testtree.serialize.serValue.blockchain)
+  if (_internal_has_blockchain()) {
+    clear_has_value_data();
+    ::testtree::serialize::serBlockchain* temp = value_data_.blockchain_;
+    value_data_.blockchain_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void serValue::unsafe_arena_set_allocated_blockchain(::testtree::serialize::serBlockchain* blockchain) {
+  clear_value_data();
+  if (blockchain) {
+    set_has_blockchain();
+    value_data_.blockchain_ = blockchain;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serValue.blockchain)
+}
+inline ::testtree::serialize::serBlockchain* serValue::_internal_mutable_blockchain() {
+  if (!_internal_has_blockchain()) {
+    clear_value_data();
+    set_has_blockchain();
+    value_data_.blockchain_ = CreateMaybeMessage< ::testtree::serialize::serBlockchain >(GetArena());
+  }
+  return value_data_.blockchain_;
+}
+inline ::testtree::serialize::serBlockchain* serValue::mutable_blockchain() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serValue.blockchain)
+  return _internal_mutable_blockchain();
+}
+
+// .testtree.serialize.serUser seruser = 5;
+inline bool serValue::_internal_has_seruser() const {
+  return value_data_case() == kSeruser;
+}
+inline bool serValue::has_seruser() const {
+  return _internal_has_seruser();
+}
+inline void serValue::set_has_seruser() {
+  _oneof_case_[0] = kSeruser;
+}
+inline void serValue::clear_seruser() {
+  if (_internal_has_seruser()) {
+    if (GetArena() == nullptr) {
+      delete value_data_.seruser_;
+    }
+    clear_has_value_data();
+  }
+}
+inline ::testtree::serialize::serUser* serValue::release_seruser() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serValue.seruser)
+  if (_internal_has_seruser()) {
+    clear_has_value_data();
+      ::testtree::serialize::serUser* temp = value_data_.seruser_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    value_data_.seruser_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::testtree::serialize::serUser& serValue::_internal_seruser() const {
+  return _internal_has_seruser()
+      ? *value_data_.seruser_
+      : reinterpret_cast< ::testtree::serialize::serUser&>(::testtree::serialize::_serUser_default_instance_);
+}
+inline const ::testtree::serialize::serUser& serValue::seruser() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serValue.seruser)
+  return _internal_seruser();
+}
+inline ::testtree::serialize::serUser* serValue::unsafe_arena_release_seruser() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:testtree.serialize.serValue.seruser)
+  if (_internal_has_seruser()) {
+    clear_has_value_data();
+    ::testtree::serialize::serUser* temp = value_data_.seruser_;
+    value_data_.seruser_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void serValue::unsafe_arena_set_allocated_seruser(::testtree::serialize::serUser* seruser) {
+  clear_value_data();
+  if (seruser) {
+    set_has_seruser();
+    value_data_.seruser_ = seruser;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serValue.seruser)
+}
+inline ::testtree::serialize::serUser* serValue::_internal_mutable_seruser() {
+  if (!_internal_has_seruser()) {
+    clear_value_data();
+    set_has_seruser();
+    value_data_.seruser_ = CreateMaybeMessage< ::testtree::serialize::serUser >(GetArena());
+  }
+  return value_data_.seruser_;
+}
+inline ::testtree::serialize::serUser* serValue::mutable_seruser() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serValue.seruser)
+  return _internal_mutable_seruser();
+}
+
+inline bool serValue::has_value_data() const {
+  return value_data_case() != VALUE_DATA_NOT_SET;
+}
+inline void serValue::clear_has_value_data() {
+  _oneof_case_[0] = VALUE_DATA_NOT_SET;
+}
+inline serValue::ValueDataCase serValue::value_data_case() const {
+  return serValue::ValueDataCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// serTreeNode
+
+// .testtree.serialize.serValue value = 1;
+inline bool serTreeNode::_internal_has_value() const {
+  return this != internal_default_instance() && value_ != nullptr;
+}
+inline bool serTreeNode::has_value() const {
+  return _internal_has_value();
+}
+inline void serTreeNode::clear_value() {
+  if (GetArena() == nullptr && value_ != nullptr) {
+    delete value_;
+  }
+  value_ = nullptr;
+}
+inline const ::testtree::serialize::serValue& serTreeNode::_internal_value() const {
+  const ::testtree::serialize::serValue* p = value_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serValue&>(
+      ::testtree::serialize::_serValue_default_instance_);
+}
+inline const ::testtree::serialize::serValue& serTreeNode::value() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTreeNode.value)
+  return _internal_value();
+}
+inline void serTreeNode::unsafe_arena_set_allocated_value(
+    ::testtree::serialize::serValue* value) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(value_);
+  }
+  value_ = value;
+  if (value) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serTreeNode.value)
+}
+inline ::testtree::serialize::serValue* serTreeNode::release_value() {
+  
+  ::testtree::serialize::serValue* temp = value_;
+  value_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::testtree::serialize::serValue* serTreeNode::unsafe_arena_release_value() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serTreeNode.value)
+  
+  ::testtree::serialize::serValue* temp = value_;
+  value_ = nullptr;
+  return temp;
+}
+inline ::testtree::serialize::serValue* serTreeNode::_internal_mutable_value() {
+  
+  if (value_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serValue>(GetArena());
+    value_ = p;
+  }
+  return value_;
+}
+inline ::testtree::serialize::serValue* serTreeNode::mutable_value() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serTreeNode.value)
+  return _internal_mutable_value();
+}
+inline void serTreeNode::set_allocated_value(::testtree::serialize::serValue* value) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete value_;
+  }
+  if (value) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(value);
+    if (message_arena != submessage_arena) {
+      value = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, value, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  value_ = value;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serTreeNode.value)
+}
+
+// .testtree.serialize.serKey key = 2;
+inline bool serTreeNode::_internal_has_key() const {
+  return this != internal_default_instance() && key_ != nullptr;
+}
+inline bool serTreeNode::has_key() const {
+  return _internal_has_key();
+}
+inline void serTreeNode::clear_key() {
+  if (GetArena() == nullptr && key_ != nullptr) {
+    delete key_;
+  }
+  key_ = nullptr;
+}
+inline const ::testtree::serialize::serKey& serTreeNode::_internal_key() const {
+  const ::testtree::serialize::serKey* p = key_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serKey&>(
+      ::testtree::serialize::_serKey_default_instance_);
+}
+inline const ::testtree::serialize::serKey& serTreeNode::key() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTreeNode.key)
+  return _internal_key();
+}
+inline void serTreeNode::unsafe_arena_set_allocated_key(
+    ::testtree::serialize::serKey* key) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(key_);
+  }
+  key_ = key;
+  if (key) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serTreeNode.key)
+}
+inline ::testtree::serialize::serKey* serTreeNode::release_key() {
+  
+  ::testtree::serialize::serKey* temp = key_;
+  key_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::testtree::serialize::serKey* serTreeNode::unsafe_arena_release_key() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serTreeNode.key)
+  
+  ::testtree::serialize::serKey* temp = key_;
+  key_ = nullptr;
+  return temp;
+}
+inline ::testtree::serialize::serKey* serTreeNode::_internal_mutable_key() {
+  
+  if (key_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serKey>(GetArena());
+    key_ = p;
+  }
+  return key_;
+}
+inline ::testtree::serialize::serKey* serTreeNode::mutable_key() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serTreeNode.key)
+  return _internal_mutable_key();
+}
+inline void serTreeNode::set_allocated_key(::testtree::serialize::serKey* key) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete key_;
+  }
+  if (key) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(key);
+    if (message_arena != submessage_arena) {
+      key = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, key, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  key_ = key;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serTreeNode.key)
+}
+
+// .testtree.serialize.serTreeNode left = 3;
+inline bool serTreeNode::_internal_has_left() const {
+  return this != internal_default_instance() && left_ != nullptr;
+}
+inline bool serTreeNode::has_left() const {
+  return _internal_has_left();
+}
+inline void serTreeNode::clear_left() {
+  if (GetArena() == nullptr && left_ != nullptr) {
+    delete left_;
+  }
+  left_ = nullptr;
+}
+inline const ::testtree::serialize::serTreeNode& serTreeNode::_internal_left() const {
+  const ::testtree::serialize::serTreeNode* p = left_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serTreeNode&>(
+      ::testtree::serialize::_serTreeNode_default_instance_);
+}
+inline const ::testtree::serialize::serTreeNode& serTreeNode::left() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTreeNode.left)
+  return _internal_left();
+}
+inline void serTreeNode::unsafe_arena_set_allocated_left(
+    ::testtree::serialize::serTreeNode* left) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(left_);
+  }
+  left_ = left;
+  if (left) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serTreeNode.left)
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::release_left() {
+  
+  ::testtree::serialize::serTreeNode* temp = left_;
+  left_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::unsafe_arena_release_left() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serTreeNode.left)
+  
+  ::testtree::serialize::serTreeNode* temp = left_;
+  left_ = nullptr;
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::_internal_mutable_left() {
+  
+  if (left_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serTreeNode>(GetArena());
+    left_ = p;
+  }
+  return left_;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::mutable_left() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serTreeNode.left)
+  return _internal_mutable_left();
+}
+inline void serTreeNode::set_allocated_left(::testtree::serialize::serTreeNode* left) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete left_;
+  }
+  if (left) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(left);
+    if (message_arena != submessage_arena) {
+      left = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, left, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  left_ = left;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serTreeNode.left)
+}
+
+// .testtree.serialize.serTreeNode right = 4;
+inline bool serTreeNode::_internal_has_right() const {
+  return this != internal_default_instance() && right_ != nullptr;
+}
+inline bool serTreeNode::has_right() const {
+  return _internal_has_right();
+}
+inline void serTreeNode::clear_right() {
+  if (GetArena() == nullptr && right_ != nullptr) {
+    delete right_;
+  }
+  right_ = nullptr;
+}
+inline const ::testtree::serialize::serTreeNode& serTreeNode::_internal_right() const {
+  const ::testtree::serialize::serTreeNode* p = right_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serTreeNode&>(
+      ::testtree::serialize::_serTreeNode_default_instance_);
+}
+inline const ::testtree::serialize::serTreeNode& serTreeNode::right() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTreeNode.right)
+  return _internal_right();
+}
+inline void serTreeNode::unsafe_arena_set_allocated_right(
+    ::testtree::serialize::serTreeNode* right) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(right_);
+  }
+  right_ = right;
+  if (right) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serTreeNode.right)
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::release_right() {
+  
+  ::testtree::serialize::serTreeNode* temp = right_;
+  right_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::unsafe_arena_release_right() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serTreeNode.right)
+  
+  ::testtree::serialize::serTreeNode* temp = right_;
+  right_ = nullptr;
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::_internal_mutable_right() {
+  
+  if (right_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serTreeNode>(GetArena());
+    right_ = p;
+  }
+  return right_;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::mutable_right() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serTreeNode.right)
+  return _internal_mutable_right();
+}
+inline void serTreeNode::set_allocated_right(::testtree::serialize::serTreeNode* right) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete right_;
+  }
+  if (right) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(right);
+    if (message_arena != submessage_arena) {
+      right = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, right, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  right_ = right;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serTreeNode.right)
+}
+
+// .testtree.serialize.serTreeNode parent = 5;
+inline bool serTreeNode::_internal_has_parent() const {
+  return this != internal_default_instance() && parent_ != nullptr;
+}
+inline bool serTreeNode::has_parent() const {
+  return _internal_has_parent();
+}
+inline void serTreeNode::clear_parent() {
+  if (GetArena() == nullptr && parent_ != nullptr) {
+    delete parent_;
+  }
+  parent_ = nullptr;
+}
+inline const ::testtree::serialize::serTreeNode& serTreeNode::_internal_parent() const {
+  const ::testtree::serialize::serTreeNode* p = parent_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serTreeNode&>(
+      ::testtree::serialize::_serTreeNode_default_instance_);
+}
+inline const ::testtree::serialize::serTreeNode& serTreeNode::parent() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTreeNode.parent)
+  return _internal_parent();
+}
+inline void serTreeNode::unsafe_arena_set_allocated_parent(
+    ::testtree::serialize::serTreeNode* parent) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(parent_);
+  }
+  parent_ = parent;
+  if (parent) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serTreeNode.parent)
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::release_parent() {
+  
+  ::testtree::serialize::serTreeNode* temp = parent_;
+  parent_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::unsafe_arena_release_parent() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serTreeNode.parent)
+  
+  ::testtree::serialize::serTreeNode* temp = parent_;
+  parent_ = nullptr;
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::_internal_mutable_parent() {
+  
+  if (parent_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serTreeNode>(GetArena());
+    parent_ = p;
+  }
+  return parent_;
+}
+inline ::testtree::serialize::serTreeNode* serTreeNode::mutable_parent() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serTreeNode.parent)
+  return _internal_mutable_parent();
+}
+inline void serTreeNode::set_allocated_parent(::testtree::serialize::serTreeNode* parent) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete parent_;
+  }
+  if (parent) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(parent);
+    if (message_arena != submessage_arena) {
+      parent = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, parent, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  parent_ = parent;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serTreeNode.parent)
+}
+
+// -------------------------------------------------------------------
+
+// serTree
+
+// .testtree.serialize.serTreeNode treenode = 1;
+inline bool serTree::_internal_has_treenode() const {
+  return this != internal_default_instance() && treenode_ != nullptr;
+}
+inline bool serTree::has_treenode() const {
+  return _internal_has_treenode();
+}
+inline void serTree::clear_treenode() {
+  if (GetArena() == nullptr && treenode_ != nullptr) {
+    delete treenode_;
+  }
+  treenode_ = nullptr;
+}
+inline const ::testtree::serialize::serTreeNode& serTree::_internal_treenode() const {
+  const ::testtree::serialize::serTreeNode* p = treenode_;
+  return p != nullptr ? *p : reinterpret_cast<const ::testtree::serialize::serTreeNode&>(
+      ::testtree::serialize::_serTreeNode_default_instance_);
+}
+inline const ::testtree::serialize::serTreeNode& serTree::treenode() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTree.treenode)
+  return _internal_treenode();
+}
+inline void serTree::unsafe_arena_set_allocated_treenode(
+    ::testtree::serialize::serTreeNode* treenode) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(treenode_);
+  }
+  treenode_ = treenode;
+  if (treenode) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:testtree.serialize.serTree.treenode)
+}
+inline ::testtree::serialize::serTreeNode* serTree::release_treenode() {
+  
+  ::testtree::serialize::serTreeNode* temp = treenode_;
+  treenode_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTree::unsafe_arena_release_treenode() {
+  // @@protoc_insertion_point(field_release:testtree.serialize.serTree.treenode)
+  
+  ::testtree::serialize::serTreeNode* temp = treenode_;
+  treenode_ = nullptr;
+  return temp;
+}
+inline ::testtree::serialize::serTreeNode* serTree::_internal_mutable_treenode() {
+  
+  if (treenode_ == nullptr) {
+    auto* p = CreateMaybeMessage<::testtree::serialize::serTreeNode>(GetArena());
+    treenode_ = p;
+  }
+  return treenode_;
+}
+inline ::testtree::serialize::serTreeNode* serTree::mutable_treenode() {
+  // @@protoc_insertion_point(field_mutable:testtree.serialize.serTree.treenode)
+  return _internal_mutable_treenode();
+}
+inline void serTree::set_allocated_treenode(::testtree::serialize::serTreeNode* treenode) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete treenode_;
+  }
+  if (treenode) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(treenode);
+    if (message_arena != submessage_arena) {
+      treenode = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, treenode, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  treenode_ = treenode;
+  // @@protoc_insertion_point(field_set_allocated:testtree.serialize.serTree.treenode)
+}
+
+// .testtree.serialize.servtype_tree_t value_type = 2;
+inline void serTree::clear_value_type() {
+  value_type_ = 0;
+}
+inline ::testtree::serialize::servtype_tree_t serTree::_internal_value_type() const {
+  return static_cast< ::testtree::serialize::servtype_tree_t >(value_type_);
+}
+inline ::testtree::serialize::servtype_tree_t serTree::value_type() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTree.value_type)
+  return _internal_value_type();
+}
+inline void serTree::_internal_set_value_type(::testtree::serialize::servtype_tree_t value) {
+  
+  value_type_ = value;
+}
+inline void serTree::set_value_type(::testtree::serialize::servtype_tree_t value) {
+  _internal_set_value_type(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serTree.value_type)
+}
+
+// .testtree.serialize.servtype_tree_t key_type = 3;
+inline void serTree::clear_key_type() {
+  key_type_ = 0;
+}
+inline ::testtree::serialize::servtype_tree_t serTree::_internal_key_type() const {
+  return static_cast< ::testtree::serialize::servtype_tree_t >(key_type_);
+}
+inline ::testtree::serialize::servtype_tree_t serTree::key_type() const {
+  // @@protoc_insertion_point(field_get:testtree.serialize.serTree.key_type)
+  return _internal_key_type();
+}
+inline void serTree::_internal_set_key_type(::testtree::serialize::servtype_tree_t value) {
+  
+  key_type_ = value;
+}
+inline void serTree::set_key_type(::testtree::serialize::servtype_tree_t value) {
+  _internal_set_key_type(value);
+  // @@protoc_insertion_point(field_set:testtree.serialize.serTree.key_type)
 }
 
 #ifdef __GNUC__
@@ -1237,11 +4165,31 @@ inline void Chat::set_allocated_fulltxt(std::string* fulltxt) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace serialize
 }  // namespace testtree
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::testtree::serialize::servtype_tree_t> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::testtree::serialize::servtype_tree_t>() {
+  return ::testtree::serialize::servtype_tree_t_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 
