@@ -147,11 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="blockchain.h" />
-    <ClInclude Include="Blockchain2.h" />
     <ClInclude Include="chatperson.h" />
     <ClInclude Include="hashtab.h" />
     <ClInclude Include="Packet.pb.h" />
-    <ClInclude Include="SerTree.h" />
     <ClInclude Include="sha256.h" />
     <ClInclude Include="tree.h" />
   </ItemGroup>

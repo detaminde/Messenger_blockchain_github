@@ -76,6 +76,11 @@ int main(void)
         tree->get_The_Tree()->type.value);
 
     cout << serstr;
+
+    serialize::serTree sertree = serialize::serTree();
+    sertree.set_alldata(serstr);
+    saveTree("tree.dat",sertree);
+
     //serialize::serTree* sertree = new_sertree(serialize::STRING_ELEM, serialize::BLOCK_ELEM);
     //set_sertree(sertree, serstring_func("0asdd"), (serialize::serBlockchain*)SerBlockchain);
     //cout<<"0asd0as0"<<endl;
@@ -130,7 +135,7 @@ int main(void)
 }
 
 //сериализация блокчейна
-/*void transform_Blockchain_ForSerialize(Blockchain& blockchain,
+void transform_Blockchain_ForSerialize_2(Blockchain& blockchain,
     serialize::serBlockchain& serblockchain)
 {
     serblockchain.set_blockcount(blockchain.getBlockCount());
@@ -150,7 +155,7 @@ void saveBlockchain(const char* fname,
     if (!serblockchain.SerializeToOstream(&out))
         throw runtime_error("Blockchain saving has failed");
 }
-*/
+
 //десериализация блокчейна(а зачем)
 
 //сериализация дерева
@@ -163,13 +168,7 @@ void saveBlockchain(const char* fname,
     seruser.set_userid(user.getId());
 }*/
 
-void saveTree(const char* fname, 
-   const serialize::serTree& sertree)
-{
-    fstream out(fname, ios::out | ios::trunc | ios::binary);
-    if (!sertree.SerializeToOstream(&out))
-        throw runtime_error("Tree saving has failed");
-}
+
 
 string transform_Blockchain_ForSerialize(Blockchain* blockchain)
 {
@@ -229,6 +228,14 @@ string transform_tree_forserialize_2(tree_node* treenode, vtype_tree_t tvalue)
             break;
         }
     }
+}
+
+void saveTree(const char* fname,
+    const serialize::serTree& sertree)
+{
+    fstream out(fname, ios::out | ios::trunc | ios::binary);
+    if (!sertree.SerializeToOstream(&out))
+        throw runtime_error("Tree saving has failed");
 }
 
 /*void _transform_TreeNode_ForSerailize(tree_node& treenode,
