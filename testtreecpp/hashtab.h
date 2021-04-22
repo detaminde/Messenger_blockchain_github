@@ -38,7 +38,7 @@ static HashTab* new_hashtab(size_t size, vtype_tree_t key, vtype_tree_t value) {
         return NULL;
     }
     switch (value) {
-    case DECIMAL_ELEM: case REAL_ELEM: case STRING_ELEM:
+    case DECIMAL_ELEM: case REAL_ELEM: case STRING_ELEM: case BLOCK_ELEM: case USER_ELEM:
         break;
     default:
         fprintf(stderr, "%s\n", "value type not supported");

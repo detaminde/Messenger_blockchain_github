@@ -5,10 +5,16 @@
 #include <iostream>
 #include <stdlib.h>
 
+
 //написать токен
 //написать функционал дл€ юзера
 
+
+
 using namespace std;
+
+
+
 class ChatPerson
 {
 protected:
@@ -56,21 +62,27 @@ void ChatPerson::printInfo()
 class User : ChatPerson
 {
 protected:
-	uint64_t id;
+	string id;
 public:
 	User(string nickname, string abyours
-		, string frsname, string secondname, uint64_t id);
-	User(string nickname, uint64_t id);
+		, string frsname, string secondname, string id);
+	User(string nickname, string id);
 	~User() {}
 
-	uint64_t getId() { return id; }
-	void setId(uint64_t newId) { this->id = newId; }
-
+	
+	//setters
+	void setId(string newId) { this->id = newId; }
+	//getters
+	string getAboutYourself() { return aboutYourself; }
+	string getNickName() { return nickname; }
+	string getFirstName() { return firstName; }
+	string getSecondName() { return secondName; }
+	string getId() { return id; }
 	void printInfo() override;
 };
 
 User::User(string nickname, string abyours
-	, string frsname, string secondname, uint64_t id) :
+	, string frsname, string secondname, string id) :
 	ChatPerson(nickname, abyours, frsname, secondname)
 {
 	this->nickname = nickname;
@@ -79,7 +91,7 @@ User::User(string nickname, string abyours
 	this->secondName = secondname;
 	this->id = id;
 }
-User::User(string nickname, uint64_t id): ChatPerson(nickname)
+User::User(string nickname, string id): ChatPerson(nickname)
 {
 	this->nickname = nickname;
 	this->id = id;
@@ -88,4 +100,19 @@ void User::printInfo()
 {
 	ChatPerson::printInfo();
 	cout << endl << "Id: " << id << endl;
+}
+string WriteMessage(User* user);
+
+static string WriteMessage(User* user)
+{
+	stringstream ss;
+	cout << "¬ведите сообщение: " << endl;
+	string buffer = "";
+	string buffer1 = "";
+	ss << user->getNickName() << '/' << user->getId() << '/';
+	buffer1 += ss.str();
+	cin >> buffer;
+	buffer1 += buffer;
+	buffer1 += '//';
+	return buffer1;
 }
