@@ -1,0 +1,19 @@
+{
+	"chat_id":1,
+	"chatData":
+	[
+		{
+			"user_id":1,
+			"username":"user",
+			"time":"21:00",
+			"message":"sometext"
+		},
+		{
+			"user_id":2,
+			"username":"user2",
+			"time":"21:01",
+			"message":"answer"
+		}
+	]
+	
+}
