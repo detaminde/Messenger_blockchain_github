@@ -11,6 +11,8 @@
 #include <QJsonParseError>
 #include <QListWidgetItem>
 
+#include "blockchain.h"
+
 //#include "ChatClient/chatperson.h"
 
 namespace Ui {

@@ -1,19 +1,52 @@
+
 {
 	"chat_id":1,
-	"chatData":
+	"Blocks":
 	[
 		{
-			"user_id":1,
-			"username":"user",
-			"time":"21:00",
-			"message":"sometext"
+			"creatorNickname":"sys",
+			"Data":"This is Genesis Block",
+			"Hash":"000nohash",
+			"TimeCreation":"21:00",
+			"PrevHash":"",
+			"Nonce":0
 		},
 		{
-			"user_id":2,
-			"username":"user2",
-			"time":"21:01",
-			"message":"answer"
+			"creatorNickname":"sys",
+			"Data":"This 1st Block",
+			"Hash":"000nohash",
+			"TimeCreation":"21:00",
+			"PrevHash":"000nohash",
+			"Nonce":0
+		},
+		{
+			"creatorNickname":"user1",
+			"Data":"privet",
+			"Hash":"00023213123dasfas34124asdfgljhd",
+			"TimeCreation":"21:00",
+			"PrevHash":"000nohash",
+			"Nonce":4124
+		},
+		{
+			"creatorNickname":"user2",
+			"Data":"nu privet",
+			"Hash":"00023ghjghjghj123dasfasjetwmsfkmzd",
+			"TimeCreation":"21:01",
+			"PrevHash":"00023213123dasfas34124asdfgljhd",
+			"Nonce":3628
 		}
 	]
-	
 }
+
+{
+	"response":600,
+	"lastHash":"000adnanfa",
+	"chat_id":1
+}
+{
+	"response":600,
+	"lastHashServer":"000adnanfa",
+	"chat_id":1
+}
+
+
