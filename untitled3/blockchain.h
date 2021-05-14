@@ -43,7 +43,7 @@ private:
 	int64_t nNonce;
 	string sData;
 	string sHash;
-	time_t tTime;
+    time_t tTime;
     inline string CalculateHash() const
     {
         stringstream ss;

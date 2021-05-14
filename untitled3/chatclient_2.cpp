@@ -32,8 +32,65 @@ ChatClient_2::ChatClient_2(QWidget *parent) :
     }
     else
     {
-        //сделать запрос с сервера на предоставление диалогов без закачки, просто список
+        if(LoadDialogs())
+            ui->statusbar->showMessage("Успешно были загружены диалоги с сервера");
+        else
+        {
+            QMessageBox::critical(this, "Ошибка", "Не удалось загрузить список диалогов");
+        }
     }
+}
+bool ChatClient_2::LoadDialogs()
+{
+    if(isConnected())
+    {
+        QString sendStr = "{\"request\":901, \"type\":\"load dialogs list\"}";
+        arrBlock_chatclient.clear();
+        arrBlock_chatclient.append(sendStr.toLocal8Bit());
+        p_TcpSocket_chatclient->write(arrBlock_chatclient);
+
+        if(ChatClient_2::ResponseFromServer_901())
+        {
+            docArr = QJsonValue(doc.object().value("Dialogs_list")).toArray();
+            for(int i = 0; i < docArr.size(); i++)
+            {
+                ui->listWidget_Dialogs->addItem(docArr.at(i).toString());
+            }
+            return true;
+        }
+        else
+        {
+            ui->statusbar->showMessage("Ошибка при загрузке списка диалогов");
+            return false;
+        }
+    }
+    else
+    {
+        ui->statusbar->showMessage("Отсутствует соединение");
+        return false;
+    }
+}
+bool ChatClient_2::ResponseFromServer_901()//мб здесь ошибка в возвращаемой переменной
+{
+    if(p_TcpSocket_chatclient->isOpen())
+    {
+        p_TcpSocket_chatclient->waitForReadyRead(2000);
+        arrBlock_chatclient.clear();
+        arrBlock_chatclient = p_TcpSocket_chatclient->readAll();
+        doc = QJsonDocument::fromJson(arrBlock_chatclient, &docError);
+        if(QJsonParseError::NoError == docError.error)
+        {
+            if((doc.object().value("response").toInt() == 901) && (doc.object().value("status").toString() == "succesful"))
+            {
+                return true;
+            }
+        }
+    }
+    else
+    {
+        return false;
+    }
+
 }
 ChatClient_2::ChatClient_2(QTcpSocket* parentSocket, QWidget* parent): QMainWindow(parent), ui(new Ui::ChatClient_2)
 {
@@ -145,7 +202,13 @@ QJsonDocument ChatClient_2::RequestDialogFromServer(QString textFromItem)
     {
         docFromServer = QJsonDocument::fromJson(arrBlock_chatclient, &docError);
         ui->statusbar->showMessage("Диалог загружен успешно");
-        return docFromServer;
+        if(QJsonParseError::NoError == docError.error)
+            return docFromServer;
+        else
+        {
+            ui->statusbar->showMessage("Ошибка: " + docError.errorString());
+            return false;
+        }
     }
     else
     {
@@ -177,13 +240,14 @@ bool ChatClient_2::ResponseFromServer_300(QString dialogName)
         return false;
 }
 //завтра доделать функцию сохранения/отправки полностью + (done)
-//ещё сделать функцию добавления вложенного файла +
+//ещё сделать функцию добавления вложенного файла(сделано) +
     //{сохранение в сжатом кеше, отправка на сервер}
-//сделать поиск людей(делаю)
+//сделать поиск людей(сделано)
     //{запрос на сервер простенький}
+//сделать приём файла(изображение и т.д.) с сервера(прописать в блоке)
 
 //затем можно будет переходить к фронтэнду
-
+//посоветоваться с Петреко на счёт ещё одной переменной в классе Block
 void ChatClient_2::on_Send_clicked()//прописать отправку на сервер и сохранение этого же сообщения в памяти ПК
 {   //пробная версия - потом переделаем под асинхронное шифрование
     //до взятия из строки нужно открыть последний блок в массиве json файла и взять его хеш
@@ -208,6 +272,11 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
                         {
                             if(ChatClient_2::isConnected())
                             {
+                                //добавить условие, если есть наличие прикрепленного файла
+                                if(!path_attachedFile.isEmpty())
+                                {
+                                    //здесь добавление в байтах в блок отдельной переменной
+                                }
                                 docArr = QJsonValue(doc.object().value("Blocks")).toArray();
                                 int numlastblock = docArr.size();
                                 QString sendHash = "\"request\":600, \"lastHash\":\""
@@ -232,6 +301,7 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
                                             ui->statusbar->showMessage("Блок был замайнен и сохранён");
                                             //отправить блок на сервак
                                             ChatClient_2::SendBlockToServer(newBlockForJson);
+                                            path_attachedFile.clear();
                                             break;
                                     }
                                     else
@@ -401,10 +471,8 @@ void ChatClient_2::on_pushButton_FindPeople_clicked()
                 QJsonArray peopleArr = QJsonValue(doc.object().value("peopleBySentNickname")).toArray();
                 for(int i = 0; i < peopleArr.size(); i++)
                 {
-                    //ui->listWidget_Dialogs->addItems() // сделать перевод QStringList и последующее добавление
+                    ui->listWidget_Dialogs->addItem(peopleArr.at(i).toString()); // сделать перевод QStringList и последующее добавление
                 }
-                //а затем сделать обратный переход
-
             }
             else
             {
@@ -433,3 +501,31 @@ void ChatClient_2::on_lineEdit_finePeople_returnPressed()
 {
     on_pushButton_FindPeople_clicked();
 }
+
+void ChatClient_2::on_lineEdit_findPeople_textChanged(const QString &someText)
+{
+    if(someText == "")
+    {
+        if(LoadDialogsFromMemory())
+        {
+            ui->statusbar->showMessage("Диалоги после поиска людей были загружены");
+        }
+        else
+            QMessageBox::critical(this, "Ошибка", "Не удалось загрузить диалоги после поиска людей");
+    }
+}
+
+void ChatClient_2::on_pushButton_clicked()
+{
+    path_attachedFile = QFileDialog::getOpenFileName(this,
+                                                     QString::fromUtf8("Выбрать файл"),
+                                                     QDir::currentPath(),
+                                                     "JPG(*.jpg);;All Files(*.*)");
+}
+
+
+
+
+
+
+

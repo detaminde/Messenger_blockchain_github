@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
+#include <QMessageBox>
 
 #include "blockchain.h"
 
@@ -36,6 +37,9 @@ private:
     QString globpath;//хранение полного пути, который пользователь выберет
     QString buffer;
     QFile file;//работа с файлом
+
+    QFile attachedFile;
+    QString path_attachedFile;
 public:
     explicit ChatClient_2(QWidget *parent = nullptr);
     explicit ChatClient_2(QTcpSocket* parentSocket, QWidget* parent = nullptr);
@@ -54,6 +58,10 @@ private slots:
 
     void on_lineEdit_finePeople_returnPressed();
 
+    void on_lineEdit_findPeople_textChanged(const QString &arg1);
+
+    void on_pushButton_clicked();
+
 private:
     Ui::ChatClient_2 *ui;
     bool isConnected();
@@ -65,6 +73,9 @@ private:
     bool SaveMessageToMemory(QString pathToFile, Block block);
     bool SendBlockToServer(Block block);
     bool ResponseFromServer_900();
+    bool LoadDialogs();
+    bool ResponseFromServer_901();
+    bool isEmpty_attachedFilePath();
 };
 
 #endif // CHATCLIENT_2_H
