@@ -9,6 +9,7 @@
 			"Hash":"000nohash",
 			"TimeCreation":"21:00",
 			"PrevHash":"",
+			"BlockNum":0,
 			"Nonce":0
 		},
 		{
@@ -17,6 +18,7 @@
 			"Hash":"000nohash",
 			"TimeCreation":"21:00",
 			"PrevHash":"000nohash",
+			"BlockNum":1,
 			"Nonce":0
 		},
 		{
@@ -25,6 +27,7 @@
 			"Hash":"00023213123dasfas34124asdfgljhd",
 			"TimeCreation":"21:00",
 			"PrevHash":"000nohash",
+			"BlockNum":2,
 			"Nonce":4124
 		},
 		{
@@ -32,21 +35,11 @@
 			"Data":"nu privet",
 			"Hash":"00023ghjghjghj123dasfasjetwmsfkmzd",
 			"TimeCreation":"21:01",
-			"PrevHash":"00023213123dasfas34124asdfgljhd",
+			"PrevHash":"00023213123dasfas34124asdfgljhdA",
+			"BlockNum":3, 
 			"Nonce":3628
 		}
 	]
-}
-
-{
-	"response":600,
-	"lastHash":"000adnanfa",
-	"chat_id":1
-}
-{
-	"response":600,
-	"lastHashServer":"000adnanfa",
-	"chat_id":1
 }
 
 

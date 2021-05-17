@@ -35,12 +35,13 @@ public:
     string getBlockData();
     string GetHash();
     string GetCreatorNickName();
-    int64_t GetNonce();
+    uint64_t GetNonce();
     string GetPrevHash();
+    uint64_t GetBlockNum();
 private:
     string creatorNickName;
-    int64_t nBlockNum;
-	int64_t nNonce;
+    uint64_t nBlockNum;
+    uint64_t nNonce;
 	string sData;
 	string sHash;
     time_t tTime;
