@@ -6,10 +6,9 @@
 
 
 //Первостепенные задачи:
-//чтобы мы сделали базу данных сообщений и их переадресацию пользователю
-//сделать прочитку диалога с сервера и сохранненого файла
-//приделать блокчейн к этому всему
-//приделать отправку онлайна и добавление в друзья(запрос с сервера)
+//электронная подпись
+//сделать приём сообщений через потоки
+//проверить все функции на логичность
 
 
 //таски на 179 строке
@@ -25,20 +24,28 @@ ChatClient_2::ChatClient_2(QWidget *parent) :
     else
         ui->statusbar->showMessage("Соединение отсутствует");
    // ui->listWidget_Dialogs->addItem("testJson");
-
+    statusClient = true;
     if(LoadDialogsFromMemory())
     {
-
+        if(ChatClient_2::isConnected())
+        {
+            if(LoadDialogs())//пересмотреть функцию
+                        ui->statusbar->showMessage("Успешно были загружены диалоги с сервера");
+                    else
+                    {
+                        QMessageBox::critical(this, "Ошибка", "Не удалось загрузить список диалогов");
+                    }
+        }
     }
     else
     {
-        if(LoadDialogs())
-            ui->statusbar->showMessage("Успешно были загружены диалоги с сервера");
-        else
-        {
-            QMessageBox::critical(this, "Ошибка", "Не удалось загрузить список диалогов");
-        }
     }
+    //засунуть это всё в потоки
+    thread_receivour = new Thread_receiviourMsg(p_TcpSocket_chatclient,
+                                                &statusClient,
+                                                ui->listWidget_Dialogs,
+                                                &doc_forThreadRec);
+    thread_receivour->run();
 }
 bool ChatClient_2::LoadDialogs()
 {
@@ -84,6 +91,15 @@ bool ChatClient_2::ResponseFromServer_901()//мб здесь ошибка в в�
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            ui->statusbar->showMessage("Ошибка: " + docError.errorString());
+            return false;
         }
     }
     else
@@ -145,27 +161,44 @@ void ChatClient_2::on_listWidget_Dialogs_itemClicked(QListWidgetItem *item)//д�
                 file.close();
                 if(!doc.isEmpty())
                 {
-                    if(QJsonParseError::NoError == docError.error)//добавить условие пустоты файла внутрь
+                    if(QJsonParseError::NoError == docError.error)
                     {
                         read = true;
                         docArr = QJsonValue(doc.object().value("Blocks")).toArray();
-                        int docArrSize = docArr.count();
-                        if(docArrSize > 100)
-                            docArrSize = 100;
-                        for(int i = 2; i < docArrSize; i++)//читает первые 100 сообщений
-                            //добавить стилизацию текста сообщений
+                        //сделать проверку на номер последнего блока
+                        if(ChatClient_2::RequestLastBlockNumber(doc.object().value("chat_id").toInteger(),
+                                docArr.last().toObject().value("BlockNum").toInt()))
                         {
+                            int docArrSize = docArr.count();
+                            if(docArrSize > 100)
+                                docArrSize = 100;
+                            ui->textBrowser->clear();
+                            for(int i = 2; i < docArrSize; i++)//читает первые 100 сообщений
+                                //добавить стилизацию текста сообщений
+                            {
 
-                           QString bufferForTextBrowser = docArr.at(i).toObject().value("TimeCreation").toString()
-                                   + ": "
-                                   + docArr.at(i).toObject().value("creatorNickname").toString()
-                                   + ": "
-                                   + docArr.at(i).toObject().value("Data").toString();//добавить условие отображение справа:
-                                                    //если отправитель - ты, то сообщение справа(скомбинирвать вместе с label)
-                          ui->textBrowser->append(bufferForTextBrowser);
+                               QString bufferForTextBrowser = docArr.at(i).toObject().value("TimeCreation").toString()
+                                       + ": "
+                                       + docArr.at(i).toObject().value("creatorNickname").toString()
+                                       + ": "
+                                       + docArr.at(i).toObject().value("Data").toString();//добавить условие отображение справа:
+                                                        //если отправитель - ты, то сообщение справа(скомбинирвать вместе с label)
+                              ui->textBrowser->append(bufferForTextBrowser);
 
+                            }
+                            item->setBackground(Qt::white);
                         }
+                        else
+                        {
+                            //здесь идёт запрос и последующая выгрузка последних блоков, которые хранятся у меня в буфере doc_forThreadRec
+                            QJsonDocument buffer_forThreadRec = doc_forThreadRec;
+                            if(ChatClient_2::RequestForNewMessages(buffer_forThreadRec,
+                                            doc.object().value("chat_id").toInteger()))
+                            {
+                                   //загрузка в файл в директории
 
+                            }
+                        }
                     }
                     else
                     {
@@ -184,26 +217,184 @@ void ChatClient_2::on_listWidget_Dialogs_itemClicked(QListWidgetItem *item)//д�
         }
         else//если нет, то запрос на сервер для закачки
         {
-            doc = ChatClient_2::RequestDialogFromServer(item->text());
+            if(ChatClient_2::RequestDialogFromServer(item->text()))
+            {
+
+            }
+            else
+            {
+                ui->statusbar->showMessage("Ошибка: при создании файла диалога");
+                break;
+            }
         }
         countRequests++;
     }while((countRequests != 2) && (!read));//пересмотреть как работает на свежую голову
 }
-QJsonDocument ChatClient_2::RequestDialogFromServer(QString textFromItem)
+bool ChatClient_2::RequestForNewMessages(QJsonDocument docFrom, int chat_id)
 {
-    QString requestToServer = "{\"request\":\"send dialog\", \"dialog_name\":\"" + textFromItem + "\"}";
+    if(ChatClient_2::isConnected())
+    {
+        QJsonArray docFrom_arr = QJsonValue(docFrom.object().value("New_Messages")).toArray();
+        QJsonArray docFrom_arr_arr;
+        for(int i = 0; i < docFrom_arr.size(); i++)
+        {
+            if(chat_id == docFrom_arr.at(i).toObject().value("chat_id").toInteger())
+            {
+                docFrom_arr_arr = QJsonValue(docFrom_arr.at(i).toObject().value("BlockNums")).toArray();
+            }
+        }
+        QString sendStr = "{\"request\":1101, \"type\":\"send new messages\", \"chat_id\":" + QString::number(chat_id) + ",";
+        for(int i = 0; i < docFrom_arr_arr.size(); i++)
+        {
+            sendStr += "\"blocknum\":" + QString::number(docFrom_arr_arr.at(i).toObject().value("blocknum").toInt()) + ",";
+        }
+        sendStr += "}";
+        p_TcpSocket_chatclient->write(sendStr.toLocal8Bit());
+        if(ChatClient_2::ResponseFromServer_1101(&doc_forLoadingMessages))
+        {
+            //поиск в директории название такого диалога(chat_id)
+            //и последующая дозапись в него
+            //и отображение
+            if(file.open(QFile::ReadWrite | QFile::Text))
+            {
+                QJsonParseError docErr_buf_FileFromMemory;
+                QJsonDocument doc_buf_FileFromMemory = QJsonDocument::fromJson(QByteArray(file.readAll()), &docErr_buf_FileFromMemory);
+                file.close();
+                if(QJsonParseError::NoError == docErr_buf_FileFromMemory.error)
+                {
+                    QJsonArray docArr_buf = doc_buf_FileFromMemory.object().value("Blocks").toArray();
+                    QJsonArray docArr_folLoadingMessages = doc_forLoadingMessages.object().value("NewBlocks").toArray();
+                    //мне нужно добавить в первый другой
+                    for(int i = 0; i < docArr_buf.size(); i++)
+                    {
+                        for(int j = 0; j < docArr_folLoadingMessages.size(); j++)
+                        {
+                            if((docArr_folLoadingMessages.at(j).toObject().value("BlockNum").toInteger() -
+                                    docArr_buf.at(i).toObject().value("BlockNum").toInt()) == 1)
+                            {
+                                docArr_buf.insert(i, docArr_folLoadingMessages.at(j));
+                            }
+                        }
+                    }
+                    //вставка в изначальный документ
+                    //QJsonDocument
+                    /*
+                file.close();
+                QJsonObject object2 {document.object()};
+
+                QJsonArray block = object2["Blocks"].toArray();
+                block.append(exBlock);
+                object2["Blocks"] = block;
+
+                document.setObject(object2);
+                qDebug() << qPrintable(document.toJson(QJsonDocument::Indented));
+
+                if(file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+                {
+                    file.write(document.toJson());
+                    file.close();
+                    return true;
+                }
+                    */
+                }
+            }
+
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    else
+        return false;
+}
+bool ChatClient_2::ResponseFromServer_1101(QJsonDocument* bufferDocForNewMessages)
+{
+    if(isConnected())
+    {
+        p_TcpSocket_chatclient->waitForReadyRead(2000);
+        QByteArray byte_arr_1101;
+        byte_arr_1101 = p_TcpSocket_chatclient->readAll();
+        QJsonParseError docErr_1101;
+        QJsonDocument doc_1101 = QJsonDocument::fromJson(byte_arr_1101, &docErr_1101);
+        if(QJsonParseError::NoError == docErr_1101.error)
+        {
+            *bufferDocForNewMessages = doc_1101;
+            return true;
+        }
+        else
+        {
+            ui->statusbar->showMessage("Ошибка: " + docErr_1101.errorString());
+            return false;
+        }
+    }
+    else
+    {
+        ui->statusbar->showMessage("Нет соединения");
+        return false;
+    }
+}
+bool ChatClient_2::RequestLastBlockNumber(int chat_id, int blocknum)
+{
+    if(isConnected())
+    {
+        QString sendStr = "\"request\":1100, \"type\":\"lastBlockNumber\", \"chat_id\":" + QString::number(chat_id) + ",\"BlockNum\":" + QString::number(blocknum) + "}";
+        p_TcpSocket_chatclient->write(sendStr.toLocal8Bit());
+        return ChatClient_2::ResponseFromServer_1100();
+    }
+    else
+    {
+        return false;
+    }
+}
+bool ChatClient_2::ResponseFromServer_1100()
+{
+    p_TcpSocket_chatclient->waitForReadyRead();
+    QByteArray buf = p_TcpSocket_chatclient->readAll();
+    QJsonParseError bufdoc_err;
+    QJsonDocument bufdoc = QJsonDocument::fromJson(buf, &bufdoc_err);
+    if(QJsonParseError::NoError == docError.error)
+    {
+        if((bufdoc.object().value("response").toInteger() == 1100) && (bufdoc.object().value("status").toString() == "this is the last block"))
+            return true;
+        else
+            return false;
+    }
+    else
+    {
+        ui->statusbar->showMessage("Ошибка 1100");
+        return false;
+    }
+}
+bool ChatClient_2::RequestDialogFromServer(QString textFromItem)//прописать ещё создание диалога
+{
+    QString requestToServer = "{\"request\":\"500\", \"dialog_name\":\"" + textFromItem + "\"}";
 
     arrBlock_chatclient.clear();
     arrBlock_chatclient.append(requestToServer.toLocal8Bit());
     p_TcpSocket_chatclient->write(arrBlock_chatclient);
     QJsonDocument docFromServer;
     //функция проверки, которая определяет данные файла
-    if(ChatClient_2::ResponseFromServer_300(textFromItem))
+    if(ChatClient_2::ResponseFromServer_500(textFromItem))
     {
         docFromServer = QJsonDocument::fromJson(arrBlock_chatclient, &docError);
-        ui->statusbar->showMessage("Диалог загружен успешно");
+
         if(QJsonParseError::NoError == docError.error)
-            return docFromServer;
+        {
+            ui->statusbar->showMessage("Диалог загружен успешно");
+            QFile newFile;
+            newFile.setFileName(docFromServer.object().value("chat_id").toString());
+            if(newFile.open(QFile::ReadOnly))
+            {
+                file.close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         else
         {
             ui->statusbar->showMessage("Ошибка: " + docError.errorString());
@@ -213,7 +404,7 @@ QJsonDocument ChatClient_2::RequestDialogFromServer(QString textFromItem)
     else
     {
         ui->statusbar->showMessage("Не получилось :(");
-        return docFromServer;
+        return false;
     }
 }
 bool ChatClient_2::isExistOnDevice(QString path)
@@ -222,7 +413,7 @@ bool ChatClient_2::isExistOnDevice(QString path)
         //проверяет существует файл или нет:если - да, то true; если - нет, то false
         return check_file.exists() && check_file.isFile();
 }
-bool ChatClient_2::ResponseFromServer_300(QString dialogName)
+bool ChatClient_2::ResponseFromServer_500(QString dialogName)
 {
     p_TcpSocket_chatclient->waitForReadyRead(3500);
     arrBlock_chatclient.clear();
@@ -258,7 +449,7 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
         int countRequest = 0;
         do
         {
-            if((isExistOnDevice(globpath)) || (flagForRequest))
+            if((flagForRequest))//а зачем мне запрос на диалог, если я на него нажал, т.е. получается двойная проверкаы
             {
                 file.setFileName(globpath);
                 //поле chat_id хранится на сервере, как и весь файл
@@ -288,8 +479,6 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
                                 if(LastHashFromServer(docArr.at(numlastblock).toObject().value("Hash").toString()))
                                     //если true, то майним блок, сохраняем его и отсылаем на сервер
                                 {
-                                    //связаться с Петренко для того, чтобы реализовать сохранение в файл
-
                                     //создать файл в котором хранится никнейм текущего юзера
                                     Block newBlockForJson(YourText.toStdString());
                                     newBlockForJson.setPrevHash(docArr.at(numlastblock).toObject().value("Hash").toString().toStdString());
@@ -312,7 +501,7 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
                                 }
                                 else
                                 {
-                                    ui->statusbar->showMessage("Не получилось замайнить блок :(");
+                                    ui->statusbar->showMessage("Не получилось замайнить блок :(");//поменять на функцию замены всех невалидных блоков на валидные
                                 }
                             }
                             else
@@ -339,9 +528,7 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
             }
             else
             {
-                //запрос файла с сервера
-                doc = ChatClient_2::RequestDialogFromServer(buffer);
-                flagForRequest = true;//пересмотреть на свежую голову как работает этот цикл
+
             }
             countRequest++;
         }while((!flagForRequest) && (countRequest != 2));
@@ -353,7 +540,7 @@ void ChatClient_2::on_Send_clicked()//прописать отправку на �
     }
 
 }
-bool ChatClient_2::SendBlockToServer(Block block)
+bool ChatClient_2::SendBlockToServer(Block block)//пересылка блока на сервер
 {
     if(ChatClient_2::isConnected())
     {
@@ -364,17 +551,19 @@ bool ChatClient_2::SendBlockToServer(Block block)
                 +"\",\"TimeCreation\":\"" + QString::fromStdString(block.getTime().c_str())
                 +"\",\"creatorNickName\":\"" + QString::fromStdString(block.GetCreatorNickName().c_str())
                 +"\","
-                +"\"request\":600, \"type\":\"save message in server\"}";
+                +"\"request\":601, \"type\":\"save message in server\"}";
         QByteArray byteArr_buf;
                 byteArr_buf.append(sendStr.toLocal8Bit());
                 p_TcpSocket_chatclient->write(byteArr_buf);
+                return true;
     }
     else
     {
         ui->statusbar->showMessage("Отсутствует подключение к серверу");
+        return false;
     }
 }
-bool ChatClient_2::SaveMessageToMemory(QString pathToFile, Block block)
+bool ChatClient_2::SaveMessageToMemory(QString pathToFile, Block block)//сохранение собщения в память
 {
 
     QFile file;
@@ -392,25 +581,38 @@ bool ChatClient_2::SaveMessageToMemory(QString pathToFile, Block block)
             exBlock.insert("Hash", QString::fromStdString(block.GetHash().c_str()));
             exBlock.insert("Time_Creation", QString::fromStdString(block.getTime().c_str()));
             exBlock.insert("PrevHash", QString::fromStdString(block.GetPrevHash().c_str()));
-            exBlock.insert("Nonce", QString::number(block.GetNonce()));//поменять функцию
+            stringstream ss;
+            ss<<block.GetNonce();
+            exBlock.insert("Nonce", QString::fromStdString(ss.str()));//поменять функцию
             document = QJsonDocument::fromJson(QByteArray(file.readAll()), &docErr);
-            file.close();
-            QJsonObject object2 {document.object()};
-
-            QJsonArray block = object2["Blocks"].toArray();
-            block.append(exBlock);
-            object2["Blocks"] = block;
-
-            document.setObject(object2);
-            qDebug() << qPrintable(document.toJson(QJsonDocument::Indented));
-
-            if(file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+            if(QJsonParseError::NoError == docError.error)
             {
-                file.write(document.toJson());
-                return true;
+                file.close();
+                QJsonObject object2 {document.object()};
+
+                QJsonArray block = object2["Blocks"].toArray();
+                block.append(exBlock);
+                object2["Blocks"] = block;
+
+                document.setObject(object2);
+                qDebug() << qPrintable(document.toJson(QJsonDocument::Indented));
+
+                if(file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+                {
+                    file.write(document.toJson());
+                    file.close();
+                    return true;
+                }
+                else
+                {
+                    file.close();
+                    return false;
+                }
             }
             else
             {
+                file.close();
+                ui->statusbar->showMessage("Ошибка: " + docErr.errorString());
                 return false;
             }
         }
@@ -425,10 +627,18 @@ bool ChatClient_2::LastHashFromServer(QString lastHash)
 
     QJsonDocument docbuf = QJsonDocument::fromJson(arrBlock_chatclient, &docError);
 
-    if(lastHash == docbuf.object().value("lastHashServer").toString())
-        return true;
+    if(QJsonParseError::NoError == docError.error)
+    {
+        if(lastHash == docbuf.object().value("lastHashServer").toString())
+            return true;
+        else
+            return false;
+    }
     else
+    {
+        ui->statusbar->showMessage("Ошибка: " + docError.errorString());
         return false;
+    }
 }
 
 void ChatClient_2::slotError(QAbstractSocket::SocketError err)
@@ -443,12 +653,12 @@ void ChatClient_2::slotError(QAbstractSocket::SocketError err)
 
         ui->statusbar->showMessage(strError);
 }
-void ChatClient_2::on_Exit_triggered()
+void ChatClient_2::on_Exit_triggered()//выход из профиля
 {
     this->close();
     emit BackToAuthorizationWindow();
 }
-bool ChatClient_2::isConnected()
+bool ChatClient_2::isConnected()//проверка на соединение
 {
     if(p_TcpSocket_chatclient->state() == QTcpSocket::ConnectedState)
         return true;
@@ -471,7 +681,7 @@ void ChatClient_2::on_pushButton_FindPeople_clicked()
                 QJsonArray peopleArr = QJsonValue(doc.object().value("peopleBySentNickname")).toArray();
                 for(int i = 0; i < peopleArr.size(); i++)
                 {
-                    ui->listWidget_Dialogs->addItem(peopleArr.at(i).toString()); // сделать перевод QStringList и последующее добавление
+                    ui->listWidget_Dialogs->addItem(peopleArr.at(i).toString());
                 }
             }
             else
@@ -482,24 +692,28 @@ void ChatClient_2::on_pushButton_FindPeople_clicked()
         }
     }
 }
-bool ChatClient_2::ResponseFromServer_900()
+bool ChatClient_2::ResponseFromServer_900()//запрос на пересылку списка людей по заданному критерию
 {
     p_TcpSocket_chatclient->waitForReadyRead(2000);
     arrBlock_chatclient.clear();
     arrBlock_chatclient = p_TcpSocket_chatclient->readAll();
 
     doc = QJsonDocument::fromJson(arrBlock_chatclient, &docError);
-    if(doc.object().value("response").toInt() == 901)//уточнить ещё этот номер
+    if(QJsonParseError::NoError == docError.error)
     {
-        return true;
+        if(doc.object().value("response").toInt() == 901)//уточнить ещё этот номер
+        {
+            return true;
+        }
+        else
+            return false;
     }
     else
+    {
+        ui->statusbar->showMessage("Ошибка: " + docError.errorString());
         return false;
+    }
 
-}
-void ChatClient_2::on_lineEdit_finePeople_returnPressed()
-{
-    on_pushButton_FindPeople_clicked();
 }
 
 void ChatClient_2::on_lineEdit_findPeople_textChanged(const QString &someText)
@@ -520,7 +734,13 @@ void ChatClient_2::on_pushButton_clicked()
     path_attachedFile = QFileDialog::getOpenFileName(this,
                                                      QString::fromUtf8("Выбрать файл"),
                                                      QDir::currentPath(),
-                                                     "JPG(*.jpg);;All Files(*.*)");
+                                                     "JPG(*.jpg);;PNG(*.png);;All Files(*.*)");
+}
+
+
+void ChatClient_2::on_lineEdit_findPeople_returnPressed()
+{
+    on_pushButton_FindPeople_clicked();
 }
 
 

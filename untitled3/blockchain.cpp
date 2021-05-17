@@ -15,6 +15,14 @@ Block::Block()
         nNonce = -1;
         tTime = time(nullptr);
 }
+uint64_t Block::GetBlockNum()
+{
+    return nBlockNum;
+}
+uint64_t Block::GetNonce()
+{
+    return nNonce;
+}
 string Block::GetPrevHash()
 {
     return sPrevHash;

@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    blockchain.cpp \
     chatclient.cpp \
     chatclient_2.cpp \
     dialog.cpp \
@@ -16,7 +17,9 @@ SOURCES += \
     mainwindow.cpp \
     myclient.cpp \
     registration.cpp \
-    sha256.cpp
+    sha256.cpp \
+    thread_loadermsg.cpp \
+    thread_receiviourmsg.cpp
 
 HEADERS += \
     blockchain.h \
@@ -27,7 +30,9 @@ HEADERS += \
     mainwindow.h \
     myclient.h \
     registration.h \
-    sha256.h
+    sha256.h \
+    thread_loadermsg.h \
+    thread_receiviourmsg.h
 
 FORMS += \
     chatclient.ui \
